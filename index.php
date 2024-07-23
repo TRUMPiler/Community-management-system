@@ -1,8 +1,8 @@
 <?php
  session_start();
-if (empty($_SESSION['Email']) || empty($_SESSION['user_id'])) {
+if (isset($_SESSION['Email']) || isset($_SESSION['user_id'])) {
     header("Location: login.php");
-    exit();
+    // exit();
 }
 ?>
 <!--  <?php 

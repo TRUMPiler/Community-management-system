@@ -3,9 +3,9 @@
 include 'connect.php';
 
 // Check if user is already logged in
-if (!empty($_SESSION['email']) && !empty($_SESSION['pass'])) {
-    header("Location: index.php");
-    exit();
+if (isset($_SESSION['email']) && isset($_SESSION['pass'])) {
+    echo "<script>alert('user is already logged in');window.location='index.php'</script>";
+    
 }
 
 
@@ -29,6 +29,7 @@ if (isset($_POST["login"])) {
                 $_SESSION["email"]=$row[0];
                 $_SESSION["pass"]=$row[1];
                 echo "<script>alert('Login is Successfull')</script>";
+                echo "<script>window.location='index.php'</script>";            
             }
             
  
@@ -36,7 +37,7 @@ if (isset($_POST["login"])) {
     }
     else
     {
-        echo "<script>alert('".md5($password)."')</script>";
+        // echo "<script>alert('".md5($password)."')</script>";
         echo "<script>alert('Login is unSuccessfull')</script>";
     }
 }
