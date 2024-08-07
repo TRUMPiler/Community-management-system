@@ -59,7 +59,12 @@ if (isset($_POST["login"])) {
     
     if (!empty($username) && !empty($password)) {
         //$sql = "SELECT uid, username, password, role FROM tbl_user WHERE username='$username' AND password='" . md5($password) . "' LIMIT 1";
-        $sql = "SELECT uid, username, password, role FROM tbl_user WHERE username='$username' AND password='". md5($password) ."' LIMIT 1";
+        $sql = "SELECT uid, username, password, role 
+        FROM tbl_user 
+        WHERE username='$username' 
+        AND password='" . md5($password) . "' 
+        AND role != 'not registered' 
+        LIMIT 1";
         $result = mysqli_query($con, $sql);
 
         if ($result->num_rows > 0) {

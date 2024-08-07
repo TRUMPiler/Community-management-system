@@ -1,4 +1,5 @@
 <?php
+session_start();
     $username = "localhost";
     $user = "root";
     $pass = "";
@@ -9,7 +10,6 @@
         die("Error!");
     }
 
-    
         $name = $_POST["name"];
         $uname = $_POST["uname"];
         $gender = $_POST["gender"];
@@ -18,22 +18,46 @@
         $address = $_POST["address"];
         $email = $_POST["email"];
         $pass = $_POST["password"];
-        $role = "Member";
-        
+        $role = "not registered";
+       
+        $query = "select * from  tbl_user where Email ='" .$_POST['email']."' limit 1";
+        $result2 = mysqli_query($conn, $query);
+        if ($result2->num_rows > 0) 
+         {   
+          echo "user exists";
+          exit();
+         } 
+        $allowTypes = array('pdf');
         $filename = $_FILES["file"]["name"];
         $tempname = $_FILES["file"]["tmp_name"];
         $folder = "certificate/".$filename;
         move_uploaded_file($tempname, $folder);
-
-        $query = "insert into tbl_user (name,username,gender,dob,contactno,address,email,password,castecertificate,role) values ('$name','$uname','$gender','$dob',$contect,'$address','$email','". md5($pass) ."','$folder','$role');";
+        
+        $fileType = pathinfo($folder, PATHINFO_EXTENSION);
+       
+        if (in_array($fileType, $allowTypes)){
+        $query = "insert into tbl_user (name,username,gender,dob,contactno,address,email,password,castecertificate,role) values ('$name','$uname','$gender','$dob',$contect,'$address','$email','". md5($pass) ."','$folder','$role')";
 
         $q = mysqli_query($conn, $query);
-
-        if ($q>0) {
-            echo true;
-        } else {
-            echo "Error: " . mysqli_error($conn);
+        
+            
+        if ($q==true) {
+            $query="select * from tbl_user where email='".$_POST["email"]."'";
+            $result=mysqli_query($conn,$query);
+            while($row=$result->fetch_assoc())
+            {
+                $_SESSION["id"]=$row["uid"];
+                $_SESSION["email"]=$_POST["email"];
+                echo true;
+            }
+        } 
+        else
+        {
+            echo false;
         }
-    
+        }
+        else{
+            echo 'Please Upload only PDF file for Certificate!';
+          }
 
 ?>

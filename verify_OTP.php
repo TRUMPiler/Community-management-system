@@ -48,7 +48,7 @@
                 $pass = $_POST['password'];
                 $pass2 = $_POST['conpassword'];
                 $email = $_SESSION['email'];
-                $hashed_pass = password_hash($pass2, PASSWORD_DEFAULT);
+                $hashed_pass = md5($pass);
 
                 if ($pass === $pass2) {
                     $sql = "UPDATE tbl_user SET password='$hashed_pass' WHERE email='$email'";
