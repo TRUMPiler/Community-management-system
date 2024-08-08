@@ -1,8 +1,9 @@
-<tb?php
+<?php
 session_start();
 if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
-   header("Location:login.php");
+   header('Location:login.php');
 } 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +117,7 @@ if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
                 <tr>
                     <div class="input-group">
                         <th> Password: </th>
-                        <td> <i class="fas fa-user"></i> <input type="password" id="password" name="password" required>  <div id="password-error" class="error">Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.</div> </tb>
+                        <td> <i class="fas fa-user"></i> <input type="password" id="password" name="password" required>  <div id="password-error" class="error">Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.</div> </>
                     </div>
                 </tr>
               
@@ -280,6 +281,13 @@ if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
     });
 });
 </script>
+<?php
+    if(isset($_SESSION['submit'])){
+        
+        header('location: index.php');
+    }
+
+?>
 <footer>
         <p>Uma Foundation, &copy; 2024</p>
 </footer>
