@@ -28,7 +28,8 @@
                 <li><a href="donation.php">Donation</a></li>
                 <li><a href="cm_request.php">Apply for committee Member</a></li>
                 <li><a href="changepassword.php">Change Password</a></li>
-                <li><button onclick="location.href='logout.php'">Logout</button></li> 
+                <li> <a href="logout.php"> Logout </a> </li>
+                <!-- <li><button onclick="location.href='logout.php'">Logout</button></li>  -->
             </ul>
         </nav>
     </header>

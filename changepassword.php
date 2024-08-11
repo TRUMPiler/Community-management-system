@@ -1,10 +1,11 @@
 <?php
-session_start();
-if(empty($_SESSION['username']) & empty($_SESSION['password'])){
-   header("Location:login.php");
+    session_start();
+        include 'connect.php';
+        include 'change-password-db.php';
+
+    if(empty($_SESSION['username']) & empty($_SESSION['password'])){
+    //    header("Location:login.php");
 }
-    include "connect.php";
-    include "change-password-db.php";
 
 ?>
 <!DocTYPE HTML>
@@ -30,13 +31,6 @@ if(empty($_SESSION['username']) & empty($_SESSION['password'])){
                 ?>
 
                 <tr>
-                    <td> Old Password </td>
-                    <td>
-                        <input type="password" name="oldpassword">
-                    </td>
-                </tr>
-
-                <tr>
                     <td> New Password </td>
                     <td>
                         <input type="password" name="newpassword">
@@ -53,7 +47,7 @@ if(empty($_SESSION['username']) & empty($_SESSION['password'])){
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" name="change" value="changepassword">
+                        <input type="submit" name="change" value="Change Password">
                     </td>
                 </tr>
 

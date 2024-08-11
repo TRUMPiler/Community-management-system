@@ -1,96 +1,47 @@
 <?php
-// session_start();
-// include 'connect.php';
-// if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
-//     header("Location:index.php");
-// }
+    session_start();
+    include 'connect.php';
 
-// // if (isset($_SESSION['email'])) {
-// //     echo "<script>alert('User is already logged in');window.location='index.php'</script>";
-// // }
-//  //if (isset($_SESSION['email']) && isset($_SESSION['pass'])) {
-// //     echo "<script>alert('User is already logged in');window.location='index.php'</script>";
-// // }
+    if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
+        header("Location: index.php");
+    }
 
-// if (isset($_POST["login"])) {
-
-//     $username = $_POST['username'];
-//     $password = $_POST['pass'];  
-//    // $role=$_POST['role'];
-//     if (!empty($username) && !empty($password)) {
-//         $sql = "SELECT username, password FROM user_table WHERE username='".$username."' AND password='".md5($password)."'LIMIT 1";
-//         $result = mysqli_query($con, $sql);
-
-//         if ($result->num_rows > 0) {
-//             while ($row = $result->fetch_row()) {
-//                 $_SESSION["username"] = $row['1'];
-//                 $_SESSION["pass"] = $row['3'];
-//                // $_SESSION["role"]=$row['4'];
-
-//                 //if($row['role'] === 'CommitteeMajor'){
-//                 echo "<script>alert('Login is successful');window.location='committee_manager.php'</script>";
-//                 //}elseif($row['role'] === 'CommitteeMember') {
-//                 //echo "<script>alert('Login is successful');window.location='committee_member.php'</script>";
-//                 //}elseif($row['role'] === 'Member'){
-//                   //  echo "<script>alert('Login is successful');window.location='member.php'</script>";
-//                 //}
-//                 //else{
-//                   //  echo "<script>alert('Login is unsuccessful')</script>";
-//                 //}
-//             }
-            
+    if (isset($_POST["login"])) {
+        $username = $_POST['username'];
+        $password = $_POST['pass'];  
         
-//         } else {
-//             echo "<script>alert('Login is unsuccessful2')</script>";
-//         }
-//     }
-    
-// }
-session_start();
-include 'connect.php';
+        if (!empty($username) && !empty($password)) {
+            $sql = "SELECT uid, username, password, role 
+            FROM tbl_user 
+            WHERE username='$username' 
+            AND password='" . md5($password) . "' 
+            LIMIT 1";
+            $result = mysqli_query($con, $sql);
 
-if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
-    header("Location:index.php");
-}
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    $_SESSION["uid"] = $row["uid"];
+                    $_SESSION["username"] = $row['username'];
+                    $_SESSION["password"] = $row['password'];
+                    $_SESSION["role"] = $row['role'];
 
-if (isset($_POST["login"])) {
-    $username = $_POST['username'];
-    $password = $_POST['pass'];  
-    
-    if (!empty($username) && !empty($password)) {
-        //$sql = "SELECT uid, username, password, role FROM tbl_user WHERE username='$username' AND password='" . md5($password) . "' LIMIT 1";
-        $sql = "SELECT uid, username, password, role 
-        FROM tbl_user 
-        WHERE username='$username' 
-        AND password='" . md5($password) . "' 
-        AND role != 'not registered' 
-        LIMIT 1";
-        $result = mysqli_query($con, $sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $_SESSION["uid"] = $row["uid"];
-                $_SESSION["username"] = $row['username'];
-                $_SESSION["password"] = $row['password'];
-                $_SESSION["role"] = $row['role'];
-
-                if ($row['role'] === 'cMajor') {
-                    echo "<script>alert('Login is successful');window.location='committee_major.php'</script>";
-                } elseif ($row['role'] === 'cMember') {
-                    echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
-                } elseif ($row['role'] === 'Member') {
-                    echo "<script>alert('Login is successful');window.location='member.php'</script>";
-                } elseif ($row['role'] === 'admin') {
-                    echo "<script>alert('Login is successful');window.location='admin.php'</script>";
-                }else {
-                    echo "<script>alert('Login is unsuccessful1')</script>";
+                    if ($row['role'] === 'cMajor') {
+                        echo "<script>alert('Login is successful');window.location='committee_major.php'</script>";
+                    } elseif ($row['role'] === 'cMember') {
+                        echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
+                    } elseif ($row['role'] === 'Member') {
+                        echo "<script>alert('Login is successful');window.location='member.php'</script>";
+                    } elseif ($row['role'] === 'admin') {
+                        echo "<script>alert('Login is successful');window.location='admin.php'</script>";
+                    }else {
+                        echo "<script>alert('Login is unsuccessful1')</script>";
+                    }
                 }
+            } else {
+                echo "<script>alert('Login is unsuccessful')</script>";
             }
-        } else {
-            echo "<script>alert('Login is unsuccessful')</script>";
         }
     }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,7 +101,7 @@ if (isset($_POST["login"])) {
     .input-box i {
         position: absolute;
         top: 50%;
-        left: 10px;
+        left: 10px; 
         transform: translateY(-50%);
         color: #003366; 
     }
@@ -196,28 +147,23 @@ if (isset($_POST["login"])) {
                 <i class='bx bxs-lock-alt'></i>
                 <input type="password" name="pass" placeholder="password" required>
             </div>
-            <!-- <div class="input-box">
-                <i class='bx bxs-user-check'></i>
-                <select name="role" required>
-                    <option value="">Select Role</option>
-                    <option value="CommitteeMajor">Committee Major</option>
-                    <option value="CommitteeMember">Committee Member</option>
-                    <option value="Member">Member</option>
-            </div> -->
+     
             <div>
             <p class="recover">
-                <a href="sendotp.php">Recover password</a>
+                <a href="sendotp.php"> Forget Password </a>
+                <a href="changepassword.php"> Change Password </a>
             </p>
             </div>
+
             <div>
-            <p>
-                <input type="submit" class="btn" value="Log in" name="login">
-            </p>
+                <p> <input type="submit" class="btn" value="Log in" name="login"> </p>
             </div>
+
             <div class="recover1">
                 <p>Don't have an account yet?</p>
                 <a href="Registration.php">Register</a>
             </div>
+            
         </div>
     </form>
 </body>

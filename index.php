@@ -1,16 +1,6 @@
 <?php
-session_start();
-    if (empty($_SESSION['username']) & empty($_SESSION['password'])) {
-        header("Location: login.php");
-    }
-    else if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
-        echo "<script>alert('User is already logged in'); window.location='member.php'</script>";
-    }
-    else
-    {
-        header("location: 'index.php");
-    }
-
+    session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +30,6 @@ session_start();
                 <li> <a href="schoralship.php"> SchoralShip </a> </li>
                 <li> <a href="Registration.php"> Registration </a> </li>
                 <li> <a href="login.php"> Login </a> </li>
-                <li> <a href="logout.php"> Logout </a> </li>
             </ul>
         </nav>
     </header>
