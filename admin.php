@@ -1,8 +1,8 @@
 <?php
  session_start();
- if(empty($_SESSION['username']) & empty($_SESSION['password'])){
-    header("Location:login.php");
-}//  exit();
+//  if(empty($_SESSION['username']) & empty($_SESSION['password'])){
+//     header("Location:login.php");
+// }//  exit();
 
 //   if (isset($_SESSION['email']) && isset($_SESSION['pass'])) {
 //     echo "<script>alert('User is already logged in');window.location='index.php'</script>";

@@ -9,7 +9,17 @@
     if (isset($_POST["login"])) {
         $username = $_POST['username'];
         $password = $_POST['pass'];  
-        
+
+        $query = "SELECT username, password FROM tbl_user where username='$username' AND password='" . md5($password) . "' ";
+        $result = mysqli_query($con,$query);
+
+        if(mysqli_num_rows($result) == 1){
+            header("location: admin.php");
+        }
+        else{
+            echo "<script>alert('Login is unsuccessful')</script>";
+        }
+
         if (!empty($username) && !empty($password)) {
             $sql = "SELECT uid, username, password, role 
             FROM tbl_user 
