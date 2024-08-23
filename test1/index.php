@@ -78,6 +78,7 @@ https://templatemo.com/tm-569-edu-meeting
                 <ul class="sub-menu">
                   <li><a href="meetings.html"> Event </a></li>
                   <li><a href="meeting-details.html"> SchoralShip </a></li>
+                  
                 </ul>
               </li>
               
