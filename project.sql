@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2024 at 10:05 PM
+-- Generation Time: Aug 23, 2024 at 06:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,37 +24,182 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cmajor_request`
+-- Table structure for table `date`
 --
 
-CREATE TABLE `cmajor_request` (
-  `mid` int(11) NOT NULL,
-  `rid` int(11) NOT NULL,
-  `status` varchar(60) NOT NULL DEFAULT 'Pending'
+CREATE TABLE `date` (
+  `id` int(11) NOT NULL,
+  `from_date` int(11) NOT NULL,
+  `To_date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cm_request`
+-- Table structure for table `tbl_announcement`
 --
 
-CREATE TABLE `cm_request` (
-  `rid` int(11) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `status` varchar(10) NOT NULL DEFAULT 'Pending'
+CREATE TABLE `tbl_announcement` (
+  `id` int(11) NOT NULL,
+  `title` varchar(20) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `declaration_date` date NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL,
+  `form` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_announcement_type`
+--
+
+CREATE TABLE `tbl_announcement_type` (
+  `id` int(11) NOT NULL,
+  `type_name` varchar(10) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_city`
+--
+
+CREATE TABLE `tbl_city` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cm_request`
+-- Dumping data for table `tbl_city`
 --
 
-INSERT INTO `cm_request` (`rid`, `uid`, `status`) VALUES
-(6, 38, 'Pending'),
-(7, 36, 'Accepted'),
-(8, 36, 'Rejected'),
-(9, 35, 'Accepted'),
-(10, 39, 'Pending');
+INSERT INTO `tbl_city` (`id`, `name`) VALUES
+(1, 'Ahmedabad'),
+(2, 'Surat'),
+(3, 'Vadodara'),
+(4, 'Rajkot'),
+(5, 'Bhavnagar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_community_major_request`
+--
+
+CREATE TABLE `tbl_community_major_request` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_community_member_request`
+--
+
+CREATE TABLE `tbl_community_member_request` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_donation`
+--
+
+CREATE TABLE `tbl_donation` (
+  `id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `date` date NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `transaction_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_hall_booking`
+--
+
+CREATE TABLE `tbl_hall_booking` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `hall_id` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `start_date_time` datetime NOT NULL,
+  `end_date_time` datetime NOT NULL,
+  `request_date` date NOT NULL,
+  `transaction_id` int(11) NOT NULL,
+  `payment_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_hall_master`
+--
+
+CREATE TABLE `tbl_hall_master` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `rent` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_participation`
+--
+
+CREATE TABLE `tbl_participation` (
+  `id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `participation_form` varchar(255) NOT NULL,
+  `submit_date` date NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_scholarship`
+--
+
+CREATE TABLE `tbl_scholarship` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `aid` int(11) NOT NULL,
+  `adhar_card_image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `school_unviersity_name` varchar(30) NOT NULL,
+  `previous_year_marksheet` float NOT NULL,
+  `current_year_std` varchar(30) NOT NULL,
+  `pan_card_no_father` varchar(11) NOT NULL,
+  `pan_card_no_mother` varchar(11) NOT NULL,
+  `occupation_father` varchar(20) NOT NULL,
+  `occupation_mother` varchar(20) NOT NULL,
+  `father_income` float NOT NULL,
+  `mother_income` float NOT NULL,
+  `bank_name` varchar(30) NOT NULL,
+  `bank_ifsc_code` varchar(20) NOT NULL,
+  `account_no` bigint(20) NOT NULL,
+  `income_certificate` varchar(255) NOT NULL,
+  `fees_receipt` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -63,95 +208,233 @@ INSERT INTO `cm_request` (`rid`, `uid`, `status`) VALUES
 --
 
 CREATE TABLE `tbl_user` (
-  `uid` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `gender` char(1) NOT NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `gender` tinyint(1) NOT NULL,
   `dob` date NOT NULL,
-  `contactno` bigint(10) NOT NULL,
-  `address` varchar(30) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `castecertificate` varchar(255) NOT NULL,
-  `status` bit(1) NOT NULL DEFAULT b'1',
-  `username` varchar(60) DEFAULT NULL,
-  `role` varchar(20) DEFAULT NULL
+  `contactno` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `caste_certificate` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `cityid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`uid`, `name`, `gender`, `dob`, `contactno`, `address`, `email`, `password`, `castecertificate`, `status`, `username`, `role`) VALUES
-(35, 'Princy P Gandhi', 'F', '2005-01-04', 9876584213, 'Surat', '22bmiit019@gmail.com', '$2y$10$qyUmolnYMm3EZ4M6ksQqtOuUTbSmm0RKZ', 'certificate/community management System.docx', b'1', 'princy', 'Member'),
-(36, 'Ishita M Patel', 'F', '2004-02-24', 7451854845, 'surat', '22bmiit022@gmail.com', '56f6cd0339afc925736fde4ec6a19dbe', 'certificate/community management System11.docx', b'1', 'CMember', 'cMember'),
-(37, 'Prachi A Patel', 'F', '2004-10-13', 9876543210, 'surat', '22bmiit136@gmail.com', 'd728dda98bf143ad20867fc35c3cca4c', 'certificate/community management System11.docx', b'1', 'prachi', 'Member'),
-(38, 'Riddhi S Patel', 'F', '2004-09-09', 9099441752, 'Dindoli', '22bmiit085@gmail.com', '6d27ac79895f44a9f1b5e0743eb308b8', 'certificate/community management System11.docx', b'1', 'riddhi', 'Member'),
-(39, 'Sandip Delwadkar', 'M', '1979-06-16', 9328719610, 'zhbvzhjbvdhjvbjv znjb njv xjv ', 'sandip.delwadkar@utu', 'b00cb291175b7d6403933130e95402f7', 'certificate/community management System11.docx', b'1', 'SDD', 'Member'),
-(41, 'Prachi A Patel', 'F', '2004-10-13', 7777777777, 'Surat', 'xyz@gmail.com', '14de6b261ca2a3e8a5d2994088301032', 'certificate/srs final group.pdf', b'1', 'Memebr', 'not registered');
+INSERT INTO `tbl_user` (`id`, `name`, `username`, `gender`, `dob`, `contactno`, `address`, `email`, `password`, `caste_certificate`, `status`, `role`, `cityid`) VALUES
+(2, 'Naishal Manish Doshi', 'Naishal', 0, '2023-06-23', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/srs final group.pdf', 0, 'Member', 2);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `cmajor_request`
+-- Indexes for table `tbl_announcement`
 --
-ALTER TABLE `cmajor_request`
-  ADD PRIMARY KEY (`mid`),
-  ADD KEY `rid` (`rid`);
+ALTER TABLE `tbl_announcement`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`);
 
 --
--- Indexes for table `cm_request`
+-- Indexes for table `tbl_announcement_type`
 --
-ALTER TABLE `cm_request`
-  ADD PRIMARY KEY (`rid`),
+ALTER TABLE `tbl_announcement_type`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_city`
+--
+ALTER TABLE `tbl_city`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_community_major_request`
+--
+ALTER TABLE `tbl_community_major_request`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `uid` (`uid`);
+
+--
+-- Indexes for table `tbl_community_member_request`
+--
+ALTER TABLE `tbl_community_member_request`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
+
+--
+-- Indexes for table `tbl_donation`
+--
+ALTER TABLE `tbl_donation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
+
+--
+-- Indexes for table `tbl_hall_booking`
+--
+ALTER TABLE `tbl_hall_booking`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`),
+  ADD KEY `hall_id` (`hall_id`);
+
+--
+-- Indexes for table `tbl_hall_master`
+--
+ALTER TABLE `tbl_hall_master`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_participation`
+--
+ALTER TABLE `tbl_participation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `type_id` (`type_id`),
+  ADD KEY `uid` (`uid`);
+
+--
+-- Indexes for table `tbl_scholarship`
+--
+ALTER TABLE `tbl_scholarship`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`),
+  ADD KEY `aid` (`aid`);
 
 --
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`uid`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cityid` (`cityid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `cmajor_request`
+-- AUTO_INCREMENT for table `tbl_announcement`
 --
-ALTER TABLE `cmajor_request`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_announcement`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cm_request`
+-- AUTO_INCREMENT for table `tbl_announcement_type`
 --
-ALTER TABLE `cm_request`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `tbl_announcement_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_city`
+--
+ALTER TABLE `tbl_city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_community_major_request`
+--
+ALTER TABLE `tbl_community_major_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_community_member_request`
+--
+ALTER TABLE `tbl_community_member_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_donation`
+--
+ALTER TABLE `tbl_donation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_hall_booking`
+--
+ALTER TABLE `tbl_hall_booking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_hall_master`
+--
+ALTER TABLE `tbl_hall_master`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_participation`
+--
+ALTER TABLE `tbl_participation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_scholarship`
+--
+ALTER TABLE `tbl_scholarship`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `cmajor_request`
+-- Constraints for table `tbl_announcement`
 --
-ALTER TABLE `cmajor_request`
-  ADD CONSTRAINT `cmajor_request_ibfk_1` FOREIGN KEY (`rid`) REFERENCES `cm_request` (`rid`);
+ALTER TABLE `tbl_announcement`
+  ADD CONSTRAINT `tbl_announcement_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `tbl_announcement_type` (`id`);
 
 --
--- Constraints for table `cm_request`
+-- Constraints for table `tbl_community_major_request`
 --
-ALTER TABLE `cm_request`
-  ADD CONSTRAINT `cm_request_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`uid`);
+ALTER TABLE `tbl_community_major_request`
+  ADD CONSTRAINT `tbl_community_major_request_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`id`);
+
+--
+-- Constraints for table `tbl_community_member_request`
+--
+ALTER TABLE `tbl_community_member_request`
+  ADD CONSTRAINT `tbl_community_member_request_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`id`);
+
+--
+-- Constraints for table `tbl_donation`
+--
+ALTER TABLE `tbl_donation`
+  ADD CONSTRAINT `tbl_donation_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`id`);
+
+--
+-- Constraints for table `tbl_hall_booking`
+--
+ALTER TABLE `tbl_hall_booking`
+  ADD CONSTRAINT `tbl_hall_booking_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`id`),
+  ADD CONSTRAINT `tbl_hall_booking_ibfk_2` FOREIGN KEY (`hall_id`) REFERENCES `tbl_hall_master` (`id`);
+
+--
+-- Constraints for table `tbl_participation`
+--
+ALTER TABLE `tbl_participation`
+  ADD CONSTRAINT `tbl_participation_ibfk_1` FOREIGN KEY (`type_id`) REFERENCES `tbl_announcement_type` (`id`),
+  ADD CONSTRAINT `tbl_participation_ibfk_2` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`id`);
+
+--
+-- Constraints for table `tbl_scholarship`
+--
+ALTER TABLE `tbl_scholarship`
+  ADD CONSTRAINT `tbl_scholarship_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `tbl_user` (`id`),
+  ADD CONSTRAINT `tbl_scholarship_ibfk_2` FOREIGN KEY (`aid`) REFERENCES `tbl_announcement` (`id`);
+
+--
+-- Constraints for table `tbl_user`
+--
+ALTER TABLE `tbl_user`
+  ADD CONSTRAINT `tbl_user_ibfk_1` FOREIGN KEY (`cityid`) REFERENCES `tbl_city` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
