@@ -16,6 +16,7 @@ session_start();
         $dob = $_POST["dob"];
         $contect = $_POST["cno"];
         $address = $_POST["address"];
+        $city = $_POST["city"];
         $email = $_POST["email"];
         $pass = $_POST["password"];
         $role = "not registered";
@@ -36,7 +37,7 @@ session_start();
         $fileType = pathinfo($folder, PATHINFO_EXTENSION);
        
         if (in_array($fileType, $allowTypes)){
-        $query = "insert into tbl_user (name,username,gender,dob,contactno,address,email,password,castecertificate,role) values ('$name','$uname','$gender','$dob',$contect,'$address','$email','". md5($pass) ."','$folder','$role')";
+        $query = "insert into tbl_user (name,username,gender,dob,contactno,address,email,password,caste_certificate,role,cityid) values ('$name','$uname','$gender','$dob',$contect,'$address','$email','". md5($pass) ."','$folder','$role',$city)";
 
         $q = mysqli_query($conn, $query);
         
@@ -46,7 +47,7 @@ session_start();
             $result=mysqli_query($conn,$query);
             while($row=$result->fetch_assoc())
             {
-                $_SESSION["id"]=$row["uid"];
+                $_SESSION["id"]=$row["id"];
                 $_SESSION["email"]=$_POST["email"];
                 echo true;
             }

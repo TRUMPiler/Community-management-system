@@ -1,3 +1,4 @@
+<script>window.location='test1/index.php'</script>
 <?php
     session_start();
     

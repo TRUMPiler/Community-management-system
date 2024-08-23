@@ -9,19 +9,9 @@
     if (isset($_POST["login"])) {
         $username = $_POST['username'];
         $password = $_POST['pass'];  
-
-        $query = "SELECT username, password FROM tbl_user where username='$username' AND password='" . md5($password) . "' ";
-        $result = mysqli_query($con,$query);
-
-        if(mysqli_num_rows($result) == 1){
-            header("location: admin.php");
-        }
-        else{
-            echo "<script>alert('Login is unsuccessful')</script>";
-        }
-
+        
         if (!empty($username) && !empty($password)) {
-            $sql = "SELECT uid, username, password, role 
+            $sql = "SELECT id, username, password, role 
             FROM tbl_user 
             WHERE username='$username' 
             AND password='" . md5($password) . "' 
@@ -30,19 +20,19 @@
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    $_SESSION["uid"] = $row["uid"];
+                    $_SESSION["id"] = $row["id"];
                     $_SESSION["username"] = $row['username'];
                     $_SESSION["password"] = $row['password'];
                     $_SESSION["role"] = $row['role'];
-
-                    if ($row['role'] === 'cMajor') {
+                    echo $row["role"];
+                    if ($row['role'] == 'cMajor') {
                         echo "<script>alert('Login is successful');window.location='committee_major.php'</script>";
-                    } elseif ($row['role'] === 'cMember') {
+                    } elseif ($row['role'] == 'cMember') {
                         echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
-                    } elseif ($row['role'] === 'Member') {
-                        echo "<script>alert('Login is successful');window.location='member.php'</script>";
-                    } elseif ($row['role'] === 'admin') {
-                        echo "<script>alert('Login is successful');window.location='admin.php'</script>";
+                    } elseif ($row['role'] == 'Member') {
+                        echo "<script>alert('Login is successful');window.location='test1/index.php'</script>";
+                    } elseif ($row['role'] == 'admin') {
+                        echo "<script>alert('Login is successful');window.location='Admin/index.php'</script>";
                     }else {
                         echo "<script>alert('Login is unsuccessful1')</script>";
                     }
@@ -178,4 +168,3 @@
     </form>
 </body>
 </html>
-
