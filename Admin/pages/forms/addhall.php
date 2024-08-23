@@ -158,7 +158,7 @@
 
 
         <!-- /.navbar -->
-        <?php include "../../aside.php";?>
+        <?php include "aside.php";?>
     </div>
 
     <div class="content-wrapper">
@@ -201,8 +201,14 @@
                                     <label for="id">id</label>
                                     <input type="text" name="id " class="form-control" id="id" placeholder="enter id">
 
-                                        <label for="Name">Name</label>
-                                        <input type="text" name="Name" class="form-control" id="Name" placeholder="Enter name">
+                                        <label for="uid">uid</label>
+                                        <input type="text" name="id" class="form-control" id="uid" placeholder="Enter uid">
+
+                                        <select name="hall" id="hallselection">
+                                        <option value="101">hall A</option>
+                                        <option value="102">hall B</option>
+                                        <option value="103">hall C</option>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>

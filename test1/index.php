@@ -226,7 +226,8 @@ https://templatemo.com/tm-569-edu-meeting
                   <div class="price">
                     <span>$22.00</span>
                   </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-01.jpg" alt="New Lecturer Meeting"></a>
+                  <a href="meeting-details.html"><img src="<?php echo ($row['image']); ?>" alt="New Lecturer Meeting">
+                  </a>
                 </div>
                 <div class="down-content">
                   <div class="date">

@@ -37,7 +37,7 @@ $result = mysqli_query($con, $query);
 </header>
     <main>
         <h2>Request List</h2>
-        <table  >
+        <table>
             <thead>
                 <tr>
                     <th>Name</th>
