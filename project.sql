@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2024 at 06:56 PM
+-- Generation Time: Aug 24, 2024 at 07:52 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,7 +48,8 @@ CREATE TABLE `tbl_announcement` (
   `declaration_date` date NOT NULL,
   `from_date` date NOT NULL,
   `to_date` date NOT NULL,
-  `form` varchar(255) NOT NULL
+  `form` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -121,7 +122,7 @@ CREATE TABLE `tbl_donation` (
   `date` date NOT NULL,
   `status` tinyint(1) NOT NULL,
   `uid` int(11) NOT NULL,
-  `transaction_id` int(11) NOT NULL
+  `transaction_id` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -228,7 +229,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `gender`, `dob`, `contactno`, `address`, `email`, `password`, `caste_certificate`, `status`, `role`, `cityid`) VALUES
-(2, 'Naishal Manish Doshi', 'Naishal', 0, '2023-06-23', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/srs final group.pdf', 0, 'Member', 2);
+(2, 'Naishal Manish Doshi', 'Naishal', 0, '2023-06-23', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/srs final group.pdf', 0, 'Member', 2),
+(3, 'Princy P Gandhi', 'princy', 0, '2022-01-01', '9876543215', 'skfjlksef', '22bmiit019@gmail.com', '486d975e9d1e757ea802bd1fed3af530', 'certificate/Screenshot 2024-03-03 123831.png', 0, 'Member', 2);
 
 --
 -- Indexes for dumped tables
@@ -379,7 +381,7 @@ ALTER TABLE `tbl_scholarship`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

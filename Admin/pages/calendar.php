@@ -341,7 +341,7 @@
         };
       }
     });
-
+    
     var calendar = new Calendar(calendarEl, {
       headerToolbar: {
         left  : 'prev,next today',
