@@ -1,47 +1,9 @@
 <?php
 session_start();
-include 'connect.php';
+if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
+   header('Location:login.php');
+} 
 
-if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
-  header("Location: index.php");
-}
-
-if (isset($_POST["login"])) {
-  $username = $_POST['username'];
-  $password = $_POST['pass'];
-  echo "yes";
-  if (!empty($username) && !empty($password)) {
-    $sql = "SELECT id, username, password, role 
-            FROM tbl_user 
-            WHERE username='$username' 
-            AND password='" . md5($password) . "' 
-            LIMIT 1";
-    $result = mysqli_query($con, $sql);
-
-    if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-        $_SESSION["id"] = $row["id"];
-        $_SESSION["username"] = $row['username'];
-        $_SESSION["password"] = $row['password'];
-        $_SESSION["role"] = $row['role'];
-        echo $row["role"];
-        if ($row['role'] == 'cMajor') {
-          echo "<script>alert('Login is successful');window.location='committee_major.php'</script>";
-        } elseif ($row['role'] == 'cMember') {
-          echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
-        } elseif ($row['role'] == 'Member') {
-          echo "<script>alert('Login is successful');window.location='test1/index.php'</script>";
-        } elseif ($row['role'] == 'admin') {
-          echo "<script>alert('Login is successful');window.location='Admin/index.php'</script>";
-        } else {
-          echo "<script>alert('Login is unsuccessful1')</script>";
-        }
-      }
-    } else {
-      echo "<script>alert('Login is unsuccessful')</script>";
-    }
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,13 +15,24 @@ if (isset($_POST["login"])) {
   <meta name="description" content="">
   <meta name="author" content="TemplateMo">
   <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Uma Foundation</title>
 
   <!-- Bootstrap core CSS -->
   <link href="test1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <style> 
+  .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+            background-color: white;
+        }
 
+        .autocomplete-suggestion:hover {
+            background-color: #f0f0f0;
+        }
+</style>
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="test1/assets/css/fontawesome.css">
   <link rel="stylesheet" href="test1/assets/css/templatemo-edu-meeting.css">
@@ -768,7 +741,7 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-lg-9 align-self-center">
           <div class="row">
             <div class="col-lg-12">
-              <form id="contact" action="#" method="post">
+              <form id="contact" class="GG" action="#" method="post">
                 <div class="row">
                   <div class="col-lg-12">
                     <h2>REGISTRATION FORM</h2>
@@ -811,6 +784,7 @@ https://templatemo.com/tm-569-edu-meeting
                     <div class="col-lg-6">
                       <fieldset>
                         <textarea id="address" name="address" rows="4" cols="20" minlength="5" placeholder="Address" required title="Please Enter your Proper Address!"></textarea>
+                        <div id="suggestions" class="autocomplete-suggestions"></div>
                         <div id="address-error" class="error"></div>
                       </fieldset>
                     </div>
@@ -955,7 +929,269 @@ https://templatemo.com/tm-569-edu-meeting
     // });
   </script>
 </body>
+<script>
+    $(document).ready(function(){
+       
+    
+    $('.GG').on('submit', function(e){
+        e.preventDefault();
+        let valid = true;
 
-</body>
+        const nameRegex = /^[a-zA-Z]+(\s[a-zA-Z]+){1,2}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^\d{10}$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        const unameRegex = /^([a-zA-Z]){2,}$/;
+        const address = $('#address').val().trim();
+    
+        const name = $('#name').val();
+        const email = $('#email').val();
+        const phone = $('#cno').val();
+        const dob = $('#dob').val();
+        const password = $('#password').val();
+        const uname = $('#uname').val();
+        const file = $('#file').val();
+        const birthDate = new Date(dob);
+                const today = new Date();
+                var age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+
+                if (age < 1) {
+                    $('#dob-error').show();
+                    valid = false;
+                } else {
+                    $('#dob-error').hide();
+                }
+
+        if (!nameRegex.test(name)) {
+            $('#name-error').show();
+            valid = false;
+        } else {
+            $('#name-error').hide();
+        }
+        if (!passwordRegex.test(password)) {
+            $('#password-error').show();
+            valid = false;
+        } else {
+            $('#password-error').hide();
+        }
+        if (!unameRegex.test(uname)) {
+            $('#uname-error').show();
+            valid = false;
+        } else {
+            $('#uname-error').hide();
+        }
+        if (!emailRegex.test(email)) {
+            $('#email-error').show();
+            valid = false;
+        } else {
+            $('#email-error').hide();
+        }
+
+        if (!phoneRegex.test(phone)) {
+            $('#phone-error').show();
+            valid = false;
+        } else {
+            $('#phone-error').hide();
+        }
+        if (!address) {
+            $('#address-error').show();
+            valid = false;
+        } else {
+            $('#address-error').hide();
+        }
+        if(!file)
+        {
+            $('#file-error').show();
+        }
+        else
+        {
+            $('#file-error').hide();
+        }
+        const formData = new FormData(this);
+        if (valid) {
+            $.ajax({
+                url: 'Register_Member.php',
+                method: 'POST',
+                data: formData,
+                contentType: false, 
+                processData: false,
+                success: function(response) {
+                    if(response==true)
+                    {
+                        alert("User Registeration successfull");
+                        window.location='registrationotp.php';
+                    }
+                    else
+                    {
+                    if(response=="user exists")
+                        {
+                            alert("User already exists");
+                        }
+                    else
+                    {
+                        
+                        if(response=="Please Upload only PDF file for Certificate!")
+                        {
+                            $('#file-error').show();
+                        }
+                        else
+                        {
+                            alert("error:"+response);
+                        }
+                    }
+                }
+            }
+            });
+        }
+    });
+});
+</script>
+<script>
+     function debounce(func, delay) {
+            let timeout;
+            return function(...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), delay);
+            };
+        }
+
+        const fetchSuggestions = debounce(function(input) {
+            if (input.length < 3) {
+                document.getElementById('suggestions').innerHTML = '';
+                return;
+            }
+            const location = '23.204547904342565, 70.87135416153141';//23.204547904342565, 70.87135416153141
+            const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
+            const url = `https://api.olamaps.io/places/v1/autocomplete?location=${location}&input=${input}&api_key=${apiKey}`;
+
+            fetch(url, {
+                    headers: {
+                        'X-Request-Id': 'your-request-id'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('API Response:', data);
+                    const suggestionsDiv = document.getElementById('suggestions');
+                    suggestionsDiv.innerHTML = '';
+                    if (data.predictions && data.predictions.length > 0) {
+                        data.predictions.forEach(prediction => {
+                            const suggestionDiv = document.createElement('div');
+                            suggestionDiv.className = 'autocomplete-suggestion';
+                            suggestionDiv.textContent = prediction.description; // Use 'description' property
+                            suggestionDiv.addEventListener('click', () => {
+                                const {
+                                    lat,
+                                    lng
+                                } = prediction.geometry.location;
+                                callcity(lat,lng);
+                                document.getElementById('address').value = prediction.description; // Use 'description' property
+                                suggestionsDiv.innerHTML = '';
+                            });
+                            suggestionsDiv.appendChild(suggestionDiv);
+                        });
+                    } else {
+                        console.error('No predictions found in the response');
+                    }
+                })
+                .catch(error => console.error('Error fetching autocomplete suggestions:', error));
+        }, 300);
+
+        document.getElementById('address').addEventListener('input', function() {
+            fetchSuggestions(this.value);
+        });
+        
+        function callcity(lat, log) {
+            var count = 0;
+            // const location = '19.265980587014074,72.96698942923868';
+            const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
+            const url = `https://api.olamaps.io/places/v1/reverse-geocode?latlng=${lat}%2C${log}&api_key=${apiKey}`;
+
+            fetch(url, {
+                    headers: {
+                        'X-Request-Id': 'your-request-id'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // if (getstate(data) == false) {
+                    //     alert("The address should belong to Gujrat only");
+                    //     return;
+                    // }
+                    getcity(data);
+                    console.log(count++);
+                });
+        }
+        function getstate(apiResponse) {
+            var count = 0;
+            var results = apiResponse.results;
+            var sublocalities = new Set(); 
+
+            for (let i = 0; i < results.length; i++) {
+                const addressComponents = results[i].address_components;
+                for (let j = 0; j < addressComponents.length; j++) {
+                    if (addressComponents[j].types.includes("administrative_area_level_1")) {
+                        const locality = addressComponents[j].long_name;
+                        if (locality === "GUJARAT") {
+
+                            return true;
+                        } else {
+                            document.getElementById('address').value = '';
+                            return false;
+                        }
+                    }
+                }
+            }
+            alert(`No match found for sub-locality please choose manually`);
+            return;
+        }
+        function getcity(apiResponse) {
+            var count = 0;
+            var results = apiResponse.results;
+            var sublocalities = new Set(); // Use a set to track unique sublocalities
+
+            for (let i = 0; i < results.length; i++) {
+                const addressComponents = results[i].address_components;
+                for (let j = 0; j < addressComponents.length; j++) {
+                    if (addressComponents[j].types.includes("locality")) {
+                        const sublocality = addressComponents[j].long_name;
+                        if (!sublocalities.has(sublocality)) {
+                            sublocalities.add(sublocality);
+                            console.log(sublocality);
+                            if (matchAreaWithSublocality(sublocality) === "ok") {
+                                console.log("done");
+                                return;
+                            } else {
+
+                            }
+                        }
+                    }
+                }
+            }
+            alert(`No match found for sub-locality please choose manually`);
+            return null;
+        }
+        function matchAreaWithSublocality(sublocalityName) {
+            const areaSelect = document.getElementById('city');
+            const options = areaSelect.options;
+
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].text.toLowerCase() === sublocalityName.toLowerCase()) {
+                    areaSelect.value = options[i].value;
+                    console.log(`Matched area: ${options[i].text} with sub-locality: ${sublocalityName}`);
+
+                    return "ok";
+                }
+            }
+
+            return null;
+        }
+</script>
+
 
 </html>

@@ -114,9 +114,9 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="showevent.php" class="nav-link">
+                <a href="showannouncement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>showevent</p>
+                  <p>showannouncement</p>
                 </a>
               </li>
               </ul>

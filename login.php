@@ -112,14 +112,14 @@ https://templatemo.com/tm-569-edu-meeting
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="../index.php" class="active"> Home </a></li>
-                            <li><a href="meetings.html"> Hall Booking </a></li>
-                            <li class="scroll-to-section"><a href="#apply"> Donation </a></li>
+                            <li class="scroll-to-section"><a href="index.php" class="active"> Home </a></li>
+                            <li><a href="#"> Hall Booking </a></li>
+                            <li class="scroll-to-section"><a href="#"> Donation </a></li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)"> Announcement </a>
                                 <ul class="sub-menu">
-                                    <li><a href="meetings.html"> Event </a></li>
-                                    <li><a href="meeting-details.html"> SchoralShip </a></li>
+                                    <li><a href="#"> Event </a></li>
+                                    <li><a href="#"> SchoralShip </a></li>
 
                                 </ul>
                             </li>
@@ -131,8 +131,8 @@ https://templatemo.com/tm-569-edu-meeting
                             <?php
                             } else {
                             ?>
-                                <li class="scroll-to-section"><a href="../Registration.php"> Registration </a></li>
-                                <li class="scroll-to-section"><a href="../login.php"> Login </a></li>
+                                <li class="scroll-to-section"><a href="Registration.php"> Registration </a></li>
+                                <li class="scroll-to-section"><a href="login.php"> Login </a></li>
                             <?php
                             }
 
