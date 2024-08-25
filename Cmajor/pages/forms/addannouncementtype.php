@@ -54,7 +54,7 @@
                                 </div>
 
                                 <!-- Form Start -->
-                                <form id="announcementTypeForm" method="post" action="submit_announcement_type.php">
+                                <form id="announcementTypeForm" method="post">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="id">ID</label>
@@ -74,7 +74,7 @@
                                     </div>
                                     <!-- Form Submit Button -->
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" id="btnsubmit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -91,5 +91,37 @@
     <script src="../../dist/js/adminlte.min.js"></script>
     <script src="../../dist/js/demo.js"></script>
 </body>
+<script type="text/javascript" src=""> 
+    $(document).ready(function()
+    {
+        $.ajax({
+            url : "../pages/forms/addannouncementtype.php",
+            type : "POST",
+            success : function(data) {
+                $("#table-data").html(data);
 
+            }
+        })
+
+    });
+
+    $("#btnsubmit").on("click",function(e){
+        e.preventDefault();
+      
+        var type_name =$("#type_name").val();
+        var status =$("#status").val();
+
+        $.ajax({
+            url : "../Ajax_file/addannouncementtype.php",
+            type : "POST",
+            data : {announcement_status:status ,announcementtype_name:type_name},
+            success : function(data)
+            {
+
+            }
+
+        })
+    })
+   
+</script>
 </html>

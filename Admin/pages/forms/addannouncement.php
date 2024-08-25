@@ -72,8 +72,21 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="type_id">Type ID</label>
-                                            <input type="number" name="type_id" class="form-control" id="type_id" placeholder="Enter Type ID" required>
+                                            <label for="type_id">Announcement Type</label>
+                                            <select name="type">
+                                            <?php
+                                            include "../../../connect.php";
+                                            $query="SELECT * FROM `tbl_announcement_type` where status=1;";
+                                            $result=mysqli_query($con,$query);
+                                            while($row=$result->fetch_assoc())
+                                            {
+                                                ?>
+                                                <option value=<?php echo $row["id"];?>> <?php echo $row["type_name"]?></option>
+                                                
+                                                <?php 
+                                            }
+                                            ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
@@ -114,6 +127,44 @@
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../dist/js/adminlte.min.js"></script>
     <script src="../../dist/js/demo.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            
+            // $.ajax({
+            //     url: '', 
+            //     type: 'POST',
+            //     success: function(data) {
+            //         var typeIdSelect = $('#type_id');
+            //         typeIdSelect.empty();
+            //         var typeIds = JSON.parse(data);
+            //         typeIds.forEach(function(Id) {
+            //             typeIdSelect.append('<option value="' + typeId.id + '">' + typeId.name + '</option>');
+            //         });
+            //     },
+            //     error: function(err) {
+            //         console.error('Failed to fetch Type IDs:', err);
+            //     }
+            // });
+            $('#announcementForm').on('submit', function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                    url:'../../../Ajax_file/addannouncement.php',
+                    type: 'post',
+                    data: $(this).serialize(),
+                    success:function(response){
+                        alter('announcement submitted successfully!');
+                    },
+                    error: function(err){
+                        alter('failed to submit the announcement,please try again.');
+                        console.error('submission error:',err);
+                    }
+                    
+                });
+            });
+        });
+        </script>
 </body>
 
 </html>
