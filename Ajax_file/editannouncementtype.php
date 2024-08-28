@@ -4,13 +4,15 @@ session_start();
 
 include "../connect.php";
 
-if (isset($_POST['status']) && isset($_POST['type_name'])) {
+if ( isset($_POST['type_name'])) {
     
-    $announcement_status = $_POST['status'];
+    
     $announcementtype_name = $_POST['type_name'];
+    $id =$_POST['id'];
+    $status=$_POST['status'];
 
   
-    $sql = "insert into tbl_announcement_type (status,type_name) values ('$announcement_status', '$announcementtype_name')";
+    $sql = "update tbl_announcement_type set type_name='$announcementtype_name',status='$status'  where id='$id'";
 
 
     if (mysqli_query($con, $sql)) {
@@ -23,6 +25,3 @@ if (isset($_POST['status']) && isset($_POST['type_name'])) {
     echo "Required fields are missing.";
 }
 ?>
-
-
-

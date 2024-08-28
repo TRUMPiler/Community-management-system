@@ -256,10 +256,10 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" href="#">Deactivated</a>
+                                                                        <a class="dropdown-item" onclick="deactive(<?php echo $row['id']?>,0)">Deactivated</a>
 
                                                                         <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                                        <a class="dropdown-item" href="../forms/editannouncement.php?id=<?php echo $row["id"];?>">Edit</a>
 
                                                                     </div>
                                                                 </div>
@@ -335,8 +335,29 @@
         <script src="../../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../../dist/js/demo.js"></script>
+        <script>
+          
+        </script>
         <!-- Page specific script -->
         <script>
+            function deactive(id,status)
+            {
+                $.ajax({
+                    url:'../../../Ajax_file/changestatusannouncement.php',
+                    data:{
+                        id:id,
+                        status:status
+                    },
+                    method:"POST",
+                    success:function(response)
+                    {
+                        if(response==true)
+                        {
+                            alert("status is changed successfully")
+                        }
+                    }
+                })
+            }
             $(function() {
                 $("#example1").DataTable({
                     "responsive": true,

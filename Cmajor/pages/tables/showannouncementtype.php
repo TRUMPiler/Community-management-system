@@ -4,21 +4,16 @@
 
     // echo "<script>console.log('GG');window.location='../../../pages/Landing/index.php'</script>" ;
     // }
-    function convertToWebPath($filesystemPath)
-    {
-        // Replace backslashes with forward slashes
-        $webPath = str_replace('\\', '/', $filesystemPath);
-    
-        // Remove the document root and unnecessary parts of the path
-        $webPath = str_replace('C:/xampp/Community-management-system/Admin/pages/tables/', '/', $webPath);
-    
-        // Prepend the base URL to the web path
-        $baseURL = '../../../../Community-management-system/';
-        $fullURL = $baseURL . $webPath;
-    
-        return $fullURL;
-    }
-    
+    // function convertToWebPath($filesystemPath)
+    // {
+    // // Replace backslashes with forward slashes
+    // $webPath=str_replace('\\', '/' , $filesystemPath);
+
+    // // Remove the document root part of the path
+    // $webPath=str_replace('C:/xampp/htdocs/', '/' , $webPath);
+
+    // return $webPath;
+    // }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -209,7 +204,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Announcement</h3>
+                                        <h3 class="card-title">Show announcement type</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -217,38 +212,24 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Title</th>
+                                                    <th>Type name</th>
                                                     <th>Status</th>
-                                                    <th>Announcemnet Type Name</th>
-                                                    <th>Description</th>
-                                                    <th>Declaration Date</th>
-                                                    <th>From Date</th>
-                                                    <th>To Date</th>
-                                                    <th>Form</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
                                                  include "../../../connect.php";
-                                                $query = "select a.id,a.title,a.status,at.type_name,a.description,a.declaration_date,a.from_date,a.to_date,a.form from tbl_announcement a join  tbl_announcement_type at on a.type_id=at.id";
+                                                $query = "select * from tbl_announcement_type";
                                                 $result = mysqli_query($con, $query);
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <tr>
                                                             <td><?php echo $row["id"]; ?></td>
-                                                            <td><?php echo $row["title"]; ?></td>
-                                                            <td><?php echo $row["status"]; ?></td>
                                                             <td><?php echo $row["type_name"]; ?></td>
-                                                            <td><?php echo $row["description"]; ?></td>
-                                                            <td><?php echo $row["declaration_date"]; ?></td>
-                                                            <td><?php echo $row["from_date"]; ?></td>
-                                                            <td><?php echo $row["to_date"]; ?></td>
-                                                            <td><a target="blank" href="<?php
+                                                            <td><?php echo $row["status"]; ?></td>
                                                            
-                                                             echo convertToWebPath($row["form"]); ?>">Click here</a></td>
-                                                         
                                                             <td>
                                                                 <div class="btn-group">
                                                                     <button type="button" class="btn btn-warning">Action</button>
@@ -259,7 +240,7 @@
                                                                         <a class="dropdown-item" onclick="deactive(<?php echo $row['id']?>,0)">Deactivated</a>
 
                                                                         <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="../forms/editannouncement.php?id=<?php echo $row["id"];?>">Edit</a>
+                                                                        <a class="dropdown-item" href="../forms/editannouncementType.php?id=<?php echo $row["id"];?>">Edit</a>
 
                                                                     </div>
                                                                 </div>
@@ -272,15 +253,9 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>Title</th>
+                                                <th>Id</th>
+                                                    <th>Type name</th>
                                                     <th>Status</th>
-                                                    <th>Announcemnet Type Name</th>
-                                                    <th>Description</th>
-                                                    <th>Declaration Date</th>
-                                                    <th>From Date</th>
-                                                    <th>To Date</th>
-                                                    <th>Form</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </tfoot>
@@ -335,9 +310,7 @@
         <script src="../../dist/js/adminlte.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../../dist/js/demo.js"></script>
-        <script>
-          
-        </script>
+        
         <!-- Page specific script -->
         <script>
             function deactive(id,status)
@@ -358,6 +331,8 @@
                     }
                 })
             }
+           
+
             $(function() {
                 $("#example1").DataTable({
                     "responsive": true,

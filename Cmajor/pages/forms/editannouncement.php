@@ -1,10 +1,13 @@
+<?php 
+$id=$_GET["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Announcement Form</title>
+    <title>Create Announcement Type</title>
     <!-- Add the required CSS and JS dependencies -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -16,6 +19,7 @@
     <link rel="stylesheet" href="../../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -30,12 +34,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Create Announcement</h1>
+                            <h1>Create Announcement Type</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Create Announcement</li>
+                                <li class="breadcrumb-item active">Create Announcement Type</li>
                             </ol>
                         </div>
                     </div>
@@ -50,56 +54,38 @@
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Announcement Form</h3>
+                                    <h3 class="card-title">Announcement Type Form</h3>
                                 </div>
 
+                                <?php
+                                include "../../../connect.php";
+                                
+
+                                $query ="select * from tbl_announcement_type where id=".$id;
+                                $run = mysqli_query($con,$query);
+                                $row= mysqli_fetch_assoc($run);
+
+                                if(!$run){
+                                    die("record not found.");
+                                }
+                                ?>
+
                                 <!-- Form Start -->
-                                <form id="announcementForm" method="post" action="submit_announcement.php">
+                                <form id="announcementTypeForm">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="id">ID</label>
-                                            <input type="text" name="id" class="form-control" id="id" placeholder="Enter ID" required>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="title">Title</label>
-                                            <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required>
+                                            <input type="text" name="title" class="form-control" id="title" value="<?php echo $row["title"];?>" placeholder="Enter title" dis>
                                         </div>
                                         <div class="form-group">
-                                            <label for="status">Status</label>
-                                            <select name="status" class="form-control" id="status" required>
-                                                <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
-                                            </select>
+                                            <label for="type_id">Type Id</label>
+                                            <input type="number" name="type_id" class="form-control" value="<?php echo $row['type_id'];?>" id="type_id" placeholder="Enter Type Name" required>
                                         </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="type_id">Type ID</label>
-                                            <input type="number" name="type_id" class="form-control" id="type_id" placeholder="Enter Type ID" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description</label>
-                                            <textarea name="description" class="form-control" id="description" rows="4" placeholder="Enter Description" required></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="declaration_date">Declaration Date</label>
-                                            <input type="date" name="declaration_date" class="form-control" id="declaration_date" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="from_date">From Date</label>
-                                            <input type="date" name="from_date" class="form-control" id="from_date" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="to_date">To Date</label>
-                                            <input type="date" name="to_date" class="form-control" id="to_date" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="form">Form</label>
-                                            <input type="text" name="form" class="form-control" id="form" placeholder="Enter Form Details" required>
-                                        </div>
+                                      
                                     </div>
                                     <!-- Form Submit Button -->
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" id="submit" name="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -110,11 +96,36 @@
         </div>
     </div>
 
+    
+  
+
     <!-- Include JS Files -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../../dist/js/adminlte.min.js"></script>
     <script src="../../dist/js/demo.js"></script>
 </body>
-
+<script> 
+   $(document).ready(function() {
+                $("#announcementTypeForm").on("submit",function(event) {
+                    event.preventDefault();
+                    const form=new FormData(this);
+                    $.ajax({
+                        url:'../../../Ajax_file/editannouncement.php',
+                        data:form,
+                        method:'POST',
+                        processData:false,
+                        contentType:false,
+                        success:function(response){
+                           if(response==true)
+                           {
+                                alert("new announcement type Updated successfully");
+                                window.location='../tables/showannouncement.php';
+                           }
+                        }
+                    })
+                })
+            })
+   
+</script>
 </html>

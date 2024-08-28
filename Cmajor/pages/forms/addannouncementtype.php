@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Announcement Type</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Add the required CSS and JS dependencies -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -54,12 +55,9 @@
                                 </div>
 
                                 <!-- Form Start -->
-                                <form id="announcementTypeForm" method="post">
+                                <form id="announcementTypeForm">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="id">ID</label>
-                                            <input type="text" name="id" class="form-control" id="id" placeholder="Enter ID" required>
-                                        </div>
+                                       
                                         <div class="form-group">
                                             <label for="type_name">Type Name</label>
                                             <input type="text" name="type_name" class="form-control" id="type_name" placeholder="Enter Type Name" required>
@@ -71,10 +69,12 @@
                                                 <option value="0">Inactive</option>
                                             </select>
                                         </div>
+
+                                        
                                     </div>
                                     <!-- Form Submit Button -->
                                     <div class="card-footer">
-                                        <button type="submit" id="btnsubmit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -91,37 +91,27 @@
     <script src="../../dist/js/adminlte.min.js"></script>
     <script src="../../dist/js/demo.js"></script>
 </body>
-<script type="text/javascript" src=""> 
-    $(document).ready(function()
-    {
-        $.ajax({
-            url : "../pages/forms/addannouncementtype.php",
-            type : "POST",
-            success : function(data) {
-                $("#table-data").html(data);
-
-            }
-        })
-
-    });
-
-    $("#btnsubmit").on("click",function(e){
-        e.preventDefault();
-      
-        var type_name =$("#type_name").val();
-        var status =$("#status").val();
-
-        $.ajax({
-            url : "../Ajax_file/addannouncementtype.php",
-            type : "POST",
-            data : {announcement_status:status ,announcementtype_name:type_name},
-            success : function(data)
-            {
-
-            }
-
-        })
-    })
+<script> 
+     $(document).ready(function() {
+                $("#announcementTypeForm").on("submit",function(event) {
+                    event.preventDefault();
+                    const form=new FormData(this);
+                    $.ajax({
+                        url:'../../../Ajax_file/addannouncementtype.php',
+                        method:'POST',
+                        data:form,
+                        processData:false,
+                        contentType:false,
+                        success:function(response){
+                           if(response==true)
+                           {
+                                alert("new announcement type added successfully");
+                                window.location='../tables/showannouncementtype.php';
+                           }
+                        }
+                    })
+                })
+            })
    
 </script>
 </html>
