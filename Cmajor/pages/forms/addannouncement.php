@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Announcement Form</title>
@@ -54,27 +55,51 @@
                                 </div>
 
                                 <!-- Form Start -->
-                                <form id="announcementForm" method="post" action="submit_announcement.php">
+                                <form id="announcementForm">
                                     <div class="card-body">
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label for="id">ID</label>
                                             <input type="text" name="id" class="form-control" id="id" placeholder="Enter ID" required>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <label for="title">Title</label>
                                             <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" required>
                                         </div>
-                                        <div class="form-group">
+
+                                        <!-- <div class="form-group">
                                             <label for="status">Status</label>
                                             <select name="status" class="form-control" id="status" required>
-                                                <option value="1">Active</option>
-                                                <option value="0">Inactive</option>
+                                                <option value="1" href="../forms/editannouncement.php?id=<?php echo $row["id"];?>" >Active</option>
+                                                <option value="0" onclick="deactive(<?php echo $row['id']?>,0)">Inactive</option>
                                             </select>
-                                        </div>
+                                        </div> -->
                                         
                                         <div class="form-group">
                                             <label for="type_id">Type ID</label>
-                                            <input type="number" name="type_id" class="form-control" id="type_id" placeholder="Enter Type ID" required>
+                                            <select name="type" class="form-control" id="type" class>
+                                            <?php  
+                                                include "../../../connect.php";
+                                                $query="select * from tbl_announcement_type where status=1";
+                                                $result=mysqli_query($con,$query);
+                                                if($result->num_rows>0)
+                                                {
+                                                    while($row=$result->fetch_assoc())
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $row["id"];?>"><?php echo $row["type_name"];?></option>
+                                                        
+                                                        <?php
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    <option value>-No type found-</option>
+                                                    <?php 
+                                                }
+                                            ?>
+
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description</label>
@@ -96,6 +121,10 @@
                                             <label for="form">Form</label>
                                             <input type="text" name="form" class="form-control" id="form" placeholder="Enter Form Details" required>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="form">Image</label>
+                                            <input type="file" name="Image" class="form-control" id="image" placeholder="Give image for this announcement" required>
+                                        </div>
                                     </div>
                                     <!-- Form Submit Button -->
                                     <div class="card-footer">
@@ -116,5 +145,52 @@
     <script src="../../dist/js/adminlte.min.js"></script>
     <script src="../../dist/js/demo.js"></script>
 </body>
+<script>
+           $(document).ready(function() {
+                $("#announcementForm").on("submit",function(event) {
+                    event.preventDefault();
+                    console.log("running");
+                    const form=new FormData(this);
+                    $.ajax({
+                        url:'../../../Ajax_file/addannouncement.php',
+                        method:'POST',
+                        data:form,
+                        processData:false,
+                        contentType:false,
+                        success:function(response){
+                           if(response==true)
+                           {
+                                alert("new announcement type added successfully");
+                                window.location='../tables/showannouncement.php';
+                           }
+                           else
+                           {
 
+                            alert(response);
+                           }
+                        }
+                    })
+                })
+            })
+</script>
+<!-- <script>
+            function deactive(id,status)
+            {
+                $.ajax({
+                    url:'../../../Ajax_file/changestatusannouncement.php',
+                    data:{
+                        id:id,
+                        status:status
+                    },
+                    method:"POST",
+                    success:function(response)
+                    {
+                        if(response==true)
+                        {
+                            alert("status is changed successfully")
+                        }
+                    }
+                })
+            }
+</script> -->
 </html>

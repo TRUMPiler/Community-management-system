@@ -316,7 +316,7 @@
             function deactive(id,status)
             {
                 $.ajax({
-                    url:'../../../Ajax_file/changestatusannouncement.php',
+                    url:'../../../Ajax_file/changestatusannouncementType.php',
                     data:{
                         id:id,
                         status:status

@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>

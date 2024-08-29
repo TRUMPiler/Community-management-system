@@ -63,7 +63,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./forms/addhall.php" class="nav-link">
+                <a href="../forms/addhall.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addhalls</p>
                 </a>
@@ -71,7 +71,7 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./forms/addevent.php" class="nav-link">
+                <a href="../forms/addevent.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addevent</p>
                 </a>
@@ -79,7 +79,7 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./forms/addscholarship.php" class="nav-link">
+                <a href="../forms/addscholarship.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addscholarship</p>
                 </a>
@@ -97,7 +97,7 @@
             <ul class="nav nav-treeview">
             
               <li class="nav-item">
-                <a href="./tables/data.html" class="nav-link">
+                <a href="data.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>DataTables</p>
                 </a>
@@ -106,7 +106,7 @@
             </ul>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./tables/showhall.php" class="nav-link">
+                <a href="showhall.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showhall</p>
                 </a>
@@ -114,7 +114,7 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./tables/showevent.php" class="nav-link">
+                <a href="showevent.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showevent</p>
                 </a>
@@ -122,7 +122,7 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./tables/showdonation.php" class="nav-link">
+                <a href="showdonation.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showdonation</p>
                 </a>
@@ -130,7 +130,7 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./tables/showscholarship.php" class="nav-link">
+                <a href="showscholarship.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showscholarship</p>
                 </a>

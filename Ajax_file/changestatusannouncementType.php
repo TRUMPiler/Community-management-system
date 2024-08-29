@@ -4,7 +4,7 @@ session_start();
 
     $status=$_POST["status"];
     $id=$_POST["id"];
-    $query="update tbl_announcement set status=".$status." where id=".$id."";
+    $query="update tbl_announcement_type set status=".$status." where id=".$id."";
     $q = mysqli_query($con,$query);
     if($q){
         echo true;

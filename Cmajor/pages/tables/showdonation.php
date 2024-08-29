@@ -222,7 +222,7 @@
                                             <tbody>
                                                 <?php 
                                                  include "../../../connect.php";
-                                                $query = "select d.id,d.amount,d.date,d.status,u.name from tbl_donation d join  tbl_user u on d.uid=u.id";
+                                                $query = "select * from tbl_donation";
                                                 $result = mysqli_query($con, $query);
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
@@ -231,8 +231,16 @@
                                                             <td><?php echo $row["id"]; ?></td>
                                                             <td><?php echo $row["amount"]; ?></td>
                                                             <td><?php echo $row["date"]; ?></td>
-                                                            <td><?php echo $row["status"]; ?></td>
-                                                            <td><?php echo $row["name"]; ?></td>
+                                                            <td><?php
+                                                            if ($row["status"] == 1) {
+                                                                        echo "Active";
+                                                                    } else {
+                                                                        echo "Deactive";
+                                                                    } 
+                                                                    
+                                                                    ?>
+                                                                    </td>
+                                                            <td><?php echo $row["user_name"]; ?></td>
                                                          
                                                             <td>
                                                                 <div class="btn-group">

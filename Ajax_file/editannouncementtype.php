@@ -9,10 +9,10 @@ if ( isset($_POST['type_name'])) {
     
     $announcementtype_name = $_POST['type_name'];
     $id =$_POST['id'];
-    $status=$_POST['status'];
+    // $status=$_POST['status'];
 
   
-    $sql = "update tbl_announcement_type set type_name='$announcementtype_name',status='$status'  where id='$id'";
+    $sql = "update tbl_announcement_type set type_name='$announcementtype_name'  where id='$id'";
 
 
     if (mysqli_query($con, $sql)) {

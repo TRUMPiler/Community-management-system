@@ -1,11 +1,11 @@
-<li?php
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+  <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -233,7 +233,15 @@ https://templatemo.com/tm-569-edu-meeting
                   <div class="price">
                     <span>$22.00</span>
                   </div>
-                  <a href="meeting-details.html"><img src="<?php echo ($row['image']); ?>" alt="New Lecturer Meeting">
+                  <!-- <a href="meeting-details.html"><img src="" alt="New Lecturer Meeting"> -->
+                  <?php
+                     $query = "select image from tbl_announcement";
+                     $result = mysqli_query($con, $query);
+
+                     while($row = mysqli_fetch_assoc($reault)){
+                      // echo "<img src="' . $row['image'] . '">";
+                     }
+                  ?>
                   </a>
                 </div>
                 <div class="down-content">

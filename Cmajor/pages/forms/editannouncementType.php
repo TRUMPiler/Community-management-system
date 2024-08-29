@@ -109,9 +109,10 @@ $id=$_GET["id"];
    $(document).ready(function() {
                 $("#announcementTypeForm").on("submit",function(event) {
                     event.preventDefault();
+                    console.log("running");
                     const form=new FormData(this);
                     $.ajax({
-                        url:'../../../Ajax_file/editannouncementtype.php',
+                        url:'../../../',
                         data:form,
                         method:'POST',
                         processData:false,

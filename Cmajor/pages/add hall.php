@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../image/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard</title>
@@ -80,7 +80,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/Admin/Index" class="nav-link">Home</a>
+                    <a href="/Cmajor/Index" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">About Us</a>
@@ -159,7 +159,7 @@
 
 
         <!-- /.navbar -->
-        <?php include "../../aside.php";?>
+        <?php include "aside.php";?>
     </div>
 
     <div class="content-wrapper">
@@ -199,38 +199,55 @@
 
                                     <div class="form-group">
 
-                                    <label for="hall_id">HALL_ID</label>
-                                    <input type="text" name="hall_id " class="form-control" id="hall_id" placeholder="enter hall_id"required>
+                                    <label for="id">ID</label>
+                                    <input type="text" name="id " class="form-control" id="id" placeholder="enter id"required>
 
-                                        <label for="hall_name">NAME:</label>
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name"required>
+                                        <label for="uid">U_ID</label>
+                                        <input type="text" name="id" class="form-control" id="uid" placeholder="Enter uid"required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="capacity">CAPACITY:</label>
-                                        <input type="number" id="capacity" name="capacity" required>
-                                        
+                                    <label for="hall_id">HALL_ID:</label>
+                                        <select id="hall_id" name="hall_id" class="form-control" required>
+                                        <option value="101">hall A</option>
+                                        <option value="102">hall B</option>
+                                        <option value="103">hall C</option>
+                                        </select>
                                     </div>
 
-                                        <div class="form-group">
-                                        <label for="image">IMAGE:</label>
-                                        <input type="file" id="image" name="image" accept="image/*"required>
+                                    <div class="form-group">
+                                    <label for="status">STATUS:</label>
+                                        <select id="status" name="status" class="form-control" required>
+                                            <option value="approved">Approved</option>
+                                            <option value="rejected">Rejected</option>
+                                        </select>
                                         </div>
 
-                                    
-
+                                        <div class="form-group">
+                                        <label for="start_date_time">START DATE & TIME:</label>
+                                        <input type="datetime-local" id="start_date_time" class="form-control" name="start_date_time" required>
+                                    </div>
                                     <div class="form-group">
-                                        <label for="address">ADDRESS:</label>
-                                        <textarea name="address" rows="6" cols="20" pattern="[A-Za-z0-9\s,.'-]+" title="required characters"requied></textarea>
+                                        <label for="end_date_time">END DATE & TIME:</label>
+                                        <input type="datetime-local" id="end_date_time" name="end_date_time" class="form-control" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="rent">RENT:</label>
-                                        <input type="number" id="rent" name="rent"required>
+                                        <label for="request_date">REQUEST_DATE</label>
+                                        <input type="date" id="request_date" name="request_date" class="form-control" required>
                                     </div>
 
+                                    <div class="form-group">
+                                        <label for="transaction_id">TRANSACTION_ID:</label>
+                                        <input type="text" id="transaction_id" name="transaction_id" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="payment_date">PAYMENT_DATE</label>
+                                        <input type="date" id="payment_date" name="payment_date" class="form-control" required>
+                                    </div>
                                     
-                                    </form> 
+                                    
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

@@ -354,6 +354,7 @@
                         if(response==true)
                         {
                             alert("status is changed successfully")
+                            window.location='showannouncement.php';
                         }
                     }
                 })

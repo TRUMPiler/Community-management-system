@@ -58,7 +58,30 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="id">ID</label>
-                                            <input type="text" name="id" class="form-control" id="id" placeholder="Enter ID" required>
+                                            <select name="type" class="form-control" id="type" class>
+                                            <?php  
+                                                include "../../../connect.php";
+                                                $query="select * from tbl_announcement_type where status=1";
+                                                $result=mysqli_query($con,$query);
+                                                if($result->num_rows>0)
+                                                {
+                                                    while($row=$result->fetch_assoc())
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $row["id"];?>"><?php echo $row["type_name"];?></option>
+                                                        
+                                                        <?php
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    <option value>-No type found-</option>
+                                                    <?php 
+                                                }
+                                            ?>
+
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="title">Title</label>
@@ -107,6 +130,10 @@
                                         <div class="form-group">
                                             <label for="form">Form</label>
                                             <input type="text" name="form" class="form-control" id="form" placeholder="Enter Form Details" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="form">Image</label>
+                                            <input type="file" name="Image" class="form-control" id="form" placeholder="Give image for this announcement" required>
                                         </div>
                                     </div>
                                     <!-- Form Submit Button -->
