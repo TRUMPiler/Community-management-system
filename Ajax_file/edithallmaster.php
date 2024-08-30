@@ -7,8 +7,8 @@ include "../connect.php";
 
 
 
-$title = $_POST['title'];
-$id = $_POST['id'];
+$name = $_POST['title'];
+$capacity = $_POST['id'];
 $typename = $_POST['type_name'];
 $description = $_POST['description'];
 $declaration_date = $_POST['declaration_date'];
@@ -18,7 +18,7 @@ $form = $_POST['form'];
 $sql="";
 if(!isset($_POST["image"]))
 {
-    $sql = "update tbl_announcement set title='$title' ,type_id='$typename' ,description='$description' , declaration_date='$declaration_date' , from_date='$from_date' ,to_date ='$to_date' ,form ='$form'  where id='$id'";
+    $sql = "update tbl_hall_master set title='$title' ,type_id='$typename' ,description='$description' , declaration_date='$declaration_date' , from_date='$from_date' ,to_date ='$to_date' ,form ='$form'  where id='$id'";
 }
 else
 {

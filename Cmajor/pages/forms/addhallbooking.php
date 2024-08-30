@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 
 <html>
@@ -197,21 +200,29 @@
                             <form id="quickForm" method="post" action="RegisterUser">
                                 <div class="card-body">
 
-                                    <div class="form-group">
+                                    <!-- <div class="form-group"> -->
 
-                                    <label for="id">ID</label>
-                                    <input type="text" name="id " class="form-control" id="id" placeholder="enter id"required>
+                                    <!-- <label for="id">ID</label>
+                                    <input type="text" name="id " class="form-control" id="id" placeholder="enter id"required> -->
 
-                                        <label for="uid">U_ID</label>
-                                        <input type="text" name="id" class="form-control" id="uid" placeholder="Enter uid"required>
-                                    </div>
-
+                                        <!-- <label for="uid">U_ID</label>
+                                        <input type="text" name="uid" class="form-control" id="uid" placeholder="Enter uid"required>
+                                    </div> -->
+                                    
                                     <div class="form-group">
                                     <label for="hall_id">HALL_ID:</label>
                                         <select id="hall_id" name="hall_id" class="form-control" required>
-                                        <option value="101">hall A</option>
-                                        <option value="102">hall B</option>
-                                        <option value="103">hall C</option>
+                                            <?php 
+                                            include "../../../connect.php";
+                                            $query="select * from tbl_hall_master where status=1";
+                                            $result1=mysqli_query($con,$query);
+                                            while($row1=$result1->fetch_assoc())
+                                            {
+                                                ?>
+                                                <option value=<?php echo $row1["id"]?>><?php echo $row1["name"];?></option>
+                                                <?php 
+                                            }
+                                            ?>
                                         </select>
                                     </div>
 
@@ -286,3 +297,31 @@
 </body>
 
 </html>
+<script>
+           $(document).ready(function() {
+                $("#quickForm").on("submit",function(event) {
+                    event.preventDefault();
+                    console.log("running");
+                    const form=new FormData(this);
+                    $.ajax({
+                        url:'../../../Ajax_file/addhallbooking.php',
+                        method:'POST',
+                        data:form,
+                        processData:false,
+                        contentType:false,
+                        success:function(response){
+                           if(response==true)
+                           {
+                                alert("Hall Booked successfully");
+                                window.location='../tables/showhallbooking.php';
+                           }
+                           else
+                           {
+
+                            alert(response);
+                           }
+                        }
+                    })
+                })
+            })
+</script>

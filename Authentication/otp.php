@@ -14,8 +14,8 @@ $mail->Password   = "siwbtjmzslyqcmoj";            // SMTP account password exam
 
 // Content
 $mail->setFrom('umafoundation123@gmail.com');   
-// $mail->addAddress($_POST['email']);
-$mail->addAddress('naishal036@gmail.com');
+$mail->addAddress($_POST['email']);
+// $mail->addAddress('naishal036@gmail.com');
 $otp=random_int(10000,99999);
 $mail->isHTML(true);                       // Set email format to HTML
 $mail->Subject = 'OTP for Login';

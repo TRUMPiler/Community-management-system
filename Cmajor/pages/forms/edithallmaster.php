@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create hall booking</title>
+    <title>Create Hall Master</title>
     <!-- Add the required CSS and JS dependencies -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -32,12 +32,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Create hall booking</h1>
+                            <h1>Create Hall Master</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Create hall booking</li>
+                                <li class="breadcrumb-item active">Create Hall Master</li>
                             </ol>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="col-md-12">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Hall Form</h3>
+                                    <h3 class="card-title">Hall master Form</h3>
                                 </div>
 
                                 <?php
@@ -62,7 +62,7 @@
                                     $id = intval($_GET['id']);
 
     
-                                 $query = "SELECT * FROM tbl_hall_booking WHERE id = $id";
+                                 $query = "SELECT * FROM tbl_hall_master WHERE id = $id";
                                  $run = mysqli_query($con, $query);
                                  if ($run) {
                                  $row = mysqli_fetch_assoc($run); 
@@ -81,77 +81,66 @@
                                  ?>
 
 
-                              <!-- Form Start -->
-                                 <form id="hallForm">
-                                    <div class="card-body">
-                                        <div class="form-group">
+                                <form id="quickForm" method="post" action="RegisterUser">
+                                <div class="card-body">
 
-                                            <label for="id">ID</label>
-                                            <input type="text" name="id" class="form-control" id="id" placeholder="Enter ID"value="<?php echo $row["id"];?>" required>
-                                        </div>
+                                    <div class="form-group">
+
+                                    <!-- <label for="id">ID</label>
+                                    <input type="text" name="id" class="form-control" id="id" placeholder="enter id" value="<?php echo $row["id"];?>"required> -->
+
+                                        <label for="hall_name">NAME:</label>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="<?php echo $row["name"];?>"required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="capacity">CAPACITY:</label>
+                                        <input type="number" id="capacity" name="capacity" value="<?php echo $row["capacity"];?>"required>
                                         
-                                        <div class="form-group">
-                                            <label for="uid">uid</label>
-                                            <input type="text" name="uid" class="form-control" id="uid" placeholder="Enter uid" value="<?php echo $row["uid"];?>"required>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="hall_id">hall_id</label>
-                                            <input type="text" name="hall_id" class="form-control" id="hall_id" placeholder="Enter hall_id" value="<?php echo $row["hall_id"];?>"required>
-                                        </div>
-
-
-                                        <!---div class="form-group">
-                                    <label for="status">STATUS:</label>
-                                        <select id="status" name="status" class="form-control" required>
-                                            <option value="approved">Approved</option>
-                                            <option value="rejected">Rejected</option>
-                                        </select>
-                                        </div-->
-
-                                        <div class="form-group">
-                                            <label for="start_date_time">START DATE & TIME:</label>
-                                            <input type="datetime-local" id="start_date_time" class="form-control" name="start_date_time" value="<?php echo $row["start_date_time"];?>"  required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="end_date_time">END DATE & TIME:</label>
-                                            <input type="datetime-local" id="end_date_time" name="end_date_time" class="form-control" value="<?php echo $row["end_date_time"];?>" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="request_date">REQUEST_DATE</label>
-                                            <input type="date" id="request_date" name="request_date" class="form-control" value="<?php echo $row["request_date"];?>" required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="transaction_id">TRANSACTION_ID:</label>
-                                            <input type="text" id="transaction_id" name="transaction_id" class="form-control"  value="<?php echo $row["transaction_id"];?>"required>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="payment_date">PAYMENT_DATE</label>
-                                            <input type="date" id="payment_date" name="payment_date" class="form-control"  value="<?php echo $row["payment_date"];?>"required>
-                                         </div>
-
-                                       
                                     </div>
-                                    <!-- Form Submit Button -->
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                                        <div class="form-group">
+                                        <label for="image">IMAGE:</label>
+                                        <input type="file" id="image" name="image" accept="image/*"required>
+                                        </div>
+
+                                    
+
+                                    <div class="form-group">
+                                        <label for="address">ADDRESS:</label>
+                                        <textarea name="address" rows="6" cols="20" pattern="[A-Za-z0-9\s,.'-]+" title="required characters"requied><?php echo $row["address"];?></textarea>
                                     </div>
-                                </form>
-                            </div>
+
+                                    <div class="form-group">
+                                        <label for="rent">RENT:</label>
+                                        <input type="number" id="rent" name="rent"required value="<?php echo $row["rent"];?>">
+                                    </div>
+
+                                    
+                                    </form> 
+                                    </div>
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
                         </div>
+                        <!-- /.card -->
                     </div>
+                    <!--/.col (left) -->
+                    <!-- right column -->
+                    <div class="col-md-6">
+
+                    </div>
+                    <!--/.col (right) -->
                 </div>
-            </section>
-        </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
     </div>
 
-    
-  
 
     <!-- Include JS Files -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -165,7 +154,7 @@
 //                     event.preventDefault();
 //                     const form=new FormData(this);
 //                     $.ajax({
-//                         url:'../../../Ajax_file/edit hall.php',
+//                         url:'../../../Ajax_file/edit hall master.php',
 //                         data:form,
 //                         method:'POST',
 //                         processData:false,
@@ -173,7 +162,7 @@
 //                         success:function(response){
 //                            if(response==true)
 //                            {
-//                                 alert("new hall booking Updated successfully");
+//                                 alert("new hall master Updated successfully");
 //                                 window.location='../tables/showhall.php';
 //                            }
 //                            else

@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Dashboard</title>
     <script type="text/javascript" language="javascript">
         function DisableBackButton() {
@@ -159,7 +160,7 @@
 
 
         <!-- /.navbar -->
-        <?php include "../../aside.php";?>
+        <?php include "aside.php"; ?>
     </div>
 
     <div class="content-wrapper">
@@ -194,64 +195,71 @@
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form id="quickForm" method="post" action="RegisterUser">
+                            <form id="GG">
                                 <div class="card-body">
 
                                     <div class="form-group">
 
-                                    <label for="hall_id">HALL_ID</label>
-                                    <input type="text" name="hall_id " class="form-control" id="hall_id" placeholder="enter hall_id"required>
+                                        <!-- <label for="hall_id">HALL_ID</label>
+                                    <input type="text" name="hall_id " class="form-control" id="hall_id" placeholder="enter hall_id"required> -->
 
                                         <label for="hall_name">NAME:</label>
-                                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name"required>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" required>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="capacity">CAPACITY:</label>
                                         <input type="number" id="capacity" name="capacity" required>
-                                        
+
                                     </div>
 
-                                        <div class="form-group">
+                                    <div class="form-group">
                                         <label for="image">IMAGE:</label>
-                                        <input type="file" id="image" name="image" accept="image/*"required>
-                                        </div>
+                                        <input type="file" id="image" name="image" required>
+                                    </div>
 
-                                    
+
 
                                     <div class="form-group">
                                         <label for="address">ADDRESS:</label>
-                                        <textarea name="address" rows="6" cols="20" pattern="[A-Za-z0-9\s,.'-]+" title="required characters"requied></textarea>
+                                        <textarea name="address" rows="6" cols="20" pattern="[A-Za-z0-9\s,.'-]+" title="required characters" requied></textarea>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="rent">RENT:</label>
-                                        <input type="number" id="rent" name="rent"required>
+                                        <input type="number" id="rent" name="rent" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="status">Status</label>
+                                        <select name="status" class="form-control" id="status" required>
+                                            <option value="1">Active</option>
+                                            <option value="0">Inactive</option>
+                                        </select>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
 
-                                    
-                                    </form> 
-                                    </div>
-                                </div>
-                                <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+
                             </form>
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!--/.col (left) -->
-                    <!-- right column -->
-                    <div class="col-md-6">
+                    <!-- /.card-body -->
 
-                    </div>
-                    <!--/.col (right) -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
+                <!-- /.card -->
+            </div>
+            <!--/.col (left) -->
+            <!-- right column -->
+            <div class="col-md-6">
+
+            </div>
+            <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+    </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
     </div>
 
     <!-- jQuery -->
@@ -269,3 +277,28 @@
 </body>
 
 </html>
+<script>
+    $(document).ready(function() {
+        console.log("running0");
+        $("#GG").submit(function(event) {
+
+            event.preventDefault();
+            const form = new FormData(this);
+            console.log("running1")
+            $.ajax({
+                url: '../../../Ajax_file/addhallmaster.php',
+                method: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log("running2")
+                    if (response == true) {
+                        alert("new announcement type added successfully");
+                        window.location = '../tables/showhall.php';
+                    }
+                }
+            })
+        })
+    })
+</script>

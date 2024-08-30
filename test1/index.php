@@ -1,5 +1,7 @@
 <?php
-session_start();
+  session_start();
+  include "../connect.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -231,20 +233,19 @@ https://templatemo.com/tm-569-edu-meeting
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
-                    <span>$22.00</span>
+                    <!-- <span>$22.00</span> -->
                   </div>
                   <!-- <a href="meeting-details.html"><img src="" alt="New Lecturer Meeting"> -->
                   <?php
-                     $query = "select image from tbl_announcement";
-                     $result = mysqli_query($con, $query);
-
-                     while($row = mysqli_fetch_assoc($reault)){
-                      // echo "<img src="' . $row['image'] . '">";
-                     }
-                  ?>
+		                  $query = "select image from tbl_announcement;";
+		                  $result = mysqli_query($con, $query);
+		                  while($row = mysqli_fetch_assoc($result)){
+	                ?>
+	                  <img src="C:/xampp/htdocs/Community-management-system/image/" <?php echo $row['file'] ?>>
+	                  <?php } ?>
                   </a>
                 </div>
-                <div class="down-content">
+                <!-- <div class="down-content">
                   <div class="date">
                     <h6>Nov <span>10</span></h6>
                   </div>
@@ -311,7 +312,8 @@ https://templatemo.com/tm-569-edu-meeting
                   <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
                 </div>
               </div>
-            </div>
+            </div> -->
+
           </div>
         </div>
       </div>
