@@ -81,14 +81,14 @@
                                  ?>
 
 
-                                <form id="quickForm" method="post" action="RegisterUser">
+                                <form id="hallForm">
                                 <div class="card-body">
 
                                     <div class="form-group">
 
                                     <!-- <label for="id">ID</label>
                                     <input type="text" name="id" class="form-control" id="id" placeholder="enter id" value="<?php echo $row["id"];?>"required> -->
-
+                                        <input type="number" name="id" id=""  value=<?php echo $row["id"];?> hidden>
                                         <label for="hall_name">NAME:</label>
                                         <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" value="<?php echo $row["name"];?>"required>
                                     </div>
@@ -101,7 +101,7 @@
 
                                         <div class="form-group">
                                         <label for="image">IMAGE:</label>
-                                        <input type="file" id="image" name="image" accept="image/*"required>
+                                        <input type="file" id="image" name="image" accept="image/*">
                                         </div>
 
                                     
@@ -115,16 +115,15 @@
                                         <label for="rent">RENT:</label>
                                         <input type="number" id="rent" name="rent"required value="<?php echo $row["rent"];?>">
                                     </div>
-
+                                    <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                                     
                                     </form> 
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
+                        
                         </div>
                         <!-- /.card -->
                     </div>
@@ -149,30 +148,31 @@
     <script src="../../dist/js/demo.js"></script>
 </body>
 <script> 
-//    $(document).ready(function() {
-//                 $("#hallForm").on("submit",function(event) {
-//                     event.preventDefault();
-//                     const form=new FormData(this);
-//                     $.ajax({
-//                         url:'../../../Ajax_file/edit hall master.php',
-//                         data:form,
-//                         method:'POST',
-//                         processData:false,
-//                         contentType:false,
-//                         success:function(response){
-//                            if(response==true)
-//                            {
-//                                 alert("new hall master Updated successfully");
-//                                 window.location='../tables/showhall.php';
-//                            }
-//                            else
-//                            {
-//                             alert(response);
-//                            }
-//                         }
-//                     })
-//                 })
-//             })
+ $(document).ready(function() {
+                $("#hallForm").on("submit",function(event) {
+                    event.preventDefault();
+                    const form=new FormData(this);
+                    $.ajax({
+                        url:'../../../Ajax_file/edithallmaster.php',
+                        data:form,
+                        method:'POST',
+                        processData:false,
+                        contentType:false,
+                        success:function(response){
+                           if(response==true)
+                           {
+                                alert(" Hall Updated successfully");
+                                window.location='../tables/showhall.php';
+                           }
+                           else
+                           {
+                            alert(response);
+                           }
+                        }
+                    })
+                })
+            })
+   
    
 </script>
 </html>

@@ -237,12 +237,12 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" onclick="deactive(<?php echo $row['id']?>,0)">Deactivated</a>
+                                                                    <a class="dropdown-item" onclick="deactive(<?php echo $row['id'] ?>,0)">Deactivated</a>
+                                                                    <a class="dropdown-item" onclick="deactive(<?php echo $row['id'] ?>,1)">activated</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="../forms/editannouncementtype.php?id=<?php echo $row["id"]; ?>">Edit</a>
 
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="../forms/editannouncementType.php?id=<?php echo $row["id"];?>">Edit</a>
-
-                                                                    </div>
+                                                                </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -326,7 +326,8 @@
                     {
                         if(response==true)
                         {
-                            alert("status is changed successfully")
+                            alert("status is changed successfully");
+                            window.location = 'showannouncementtype.php';
                         }
                     }
                 })

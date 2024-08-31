@@ -83,7 +83,7 @@
 
                             <!-- form start -->
 
-                                <form id="quickForm" method="post" action="RegisterUser">
+                                <form id= "hallbookingform">
                                 <div class="card-body">
 
                                     <div class="form-group">
@@ -91,26 +91,45 @@
                                      <!-- <label for="id">ID</label>
                                      <input type="text" name="id " class="form-control" id="id" placeholder="enter id" value="<?php echo $row["id"];?>"required> -->
 
-                                        <label for="uid">U_ID</label>
-                                        <input type="text" name="uid" class="form-control" id="uid" placeholder="Enter uid" value="<?php echo $row["uid"];?>"required>
+                                        <!--label for="uid">U_ID</label>
+                                        <input type="text" name="uid" class="form-control" id="uid" placeholder="Enter uid" value="<?php echo $row["uid"];?>"required>-->
+
+                                        <input type="number" name="id" id=""  value=<?php echo $row["id"];?> hidden>
                                     </div>
 
                                     <div class="form-group">
                                     <label for="hall_id">HALL_ID:</label>
-                                        <select id="hall_id" name="hall_id" class="form-control" value="<?php echo $row["Hall_id"];?>" required>
-                                        <option value="101">hall A</option>
-                                        <option value="102">hall B</option>
-                                        <option value="103">hall C</option>
+                                        <select name="hall_id" class="form-control" id="type" class>
+                                            <?php
+                                                include "../../../connect.php";
+                                                $query="select * from tbl_hall_master where status=1";
+                                                $result=mysqli_query($con,$query);
+                                                if($result->num_rows>0)
+                                                {
+                                                    while($row1=$result->fetch_assoc())
+                                                    {
+                                                        ?>
+                                                        <option value="<?php echo $row1["id"];?>" <?php echo ($row1['id']==$row["hall_id"])? 'selected' :''; ?>><?php echo $row1["name"];?> </option>
+                                                        <?php
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    ?>
+                                                    <option value>-no type found-<s</option>
+                                                    <?php
+                                                }
+                                            ?>
                                         </select>
-                                    </div>
+                                            </div>
 
-                                    <div class="form-group">
+                                    <!--div class="form-group">
                                     <label for="status">STATUS:</label>
                                         <select id="status" name="status" class="form-control"value="<?php echo $row["status"];?>" required >
                                             <option value="approved">Approved</option>
                                             <option value="rejected">Rejected</option>
                                         </select>
-                                        </div>
+                                        </div>-->
 
                                         <div class="form-group">
                                         <label for="start_date_time">START DATE & TIME:</label>
@@ -172,11 +191,11 @@
 </body>
 <script> 
    $(document).ready(function() {
-                $("#quickForm").on("submit",function(event) {
+                $("#hallbookingform").on("submit",function(event) {
                     event.preventDefault();
                     const form=new FormData(this);
                     $.ajax({
-                        url:'../../../Ajax_file/edit hall.php',
+                        url:'../../../Ajax_file/edithallbooking.php',
                         data:form,
                         method:'POST',
                         processData:false,
@@ -184,8 +203,8 @@
                         success:function(response){
                            if(response==true)
                            {
-                                alert("new hall booking Updated successfully");
-                                window.location='../tables/showhall.php';
+                                alert("hall booking Updated successfully");
+                                window.location='../tables/showhallbooking.php';
                            }
                            else
                            {

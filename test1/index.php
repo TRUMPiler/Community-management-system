@@ -1,6 +1,10 @@
 <?php
   session_start();
   include "../connect.php";
+  function formatDate($date,$format) {
+    $dateTime = new DateTime($date);
+    return $dateTime->format($format);
+}
 
 ?>
 <!DOCTYPE html>
@@ -26,12 +30,18 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/lightbox.css">
   <!--
-
+  
 TemplateMo 569 Edu Meeting
 
 https://templatemo.com/tm-569-edu-meeting
 
 -->
+<style>
+  .ann-image{
+    width: 396px;
+    height: 204px;
+  }
+</style>
 </head>
 
 <body>
@@ -216,7 +226,15 @@ https://templatemo.com/tm-569-edu-meeting
           <div class="categories">
             <h4> Announcement </h4>
             <ul>
-              <li><a href="#"> Event </a></li>
+            <?php 
+            $query="select * from tbl_announcement where status=1 ORDER BY id desc limit 10";
+            $result=mysqli_query($con,$query);
+            while($row=$result->fetch_assoc())
+            {
+            ?>  
+            <li><a href="#"> <?php echo $row["title"];?> </a></li><br>
+              
+            <?php } ?>
               <!-- <li><a href="#"> Navratri </a></li>
               <li><a href="#"> Diwali </a></li>
               <li><a href="#"> Navratr </a></li>
@@ -229,72 +247,40 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
         <div class="col-lg-8">
           <div class="row">
+            <?php 
+            $query="select * from tbl_announcement where status=1 ORDER BY id desc  limit 6";
+            $result=mysqli_query($con,$query);
+            while($row=$result->fetch_assoc())
+            {
+            ?>
+            
             <div class="col-lg-6">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
-                    <!-- <span>$22.00</span> -->
+                    <!-- <span></span> -->
                   </div>
-                  <!-- <a href="meeting-details.html"><img src="" alt="New Lecturer Meeting"> -->
-                  <?php
-		                  $query = "select image from tbl_announcement;";
-		                  $result = mysqli_query($con, $query);
-		                  while($row = mysqli_fetch_assoc($result)){
-	                ?>
-	                  <img src="C:/xampp/htdocs/Community-management-system/image/" <?php echo $row['file'] ?>>
-	                  <?php } ?>
+                  <a href="meeting-details.html"><img class="ann-image" src="../<?php echo ($row['image']); ?>" alt="New Lecturer Meeting">
                   </a>
-                </div>
-                <!-- <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>10</span></h6>
-                  </div>
-                  <a href="meeting-details.html">
-                    <h4>New Lecturers Meeting</h4>
-                  </a>
-                  <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>$36.00</span>
-                  </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-02.jpg" alt="Online Teaching"></a>
                 </div>
                 <div class="down-content">
                   <div class="date">
-                    <h6>Nov <span>24</span></h6>
+                    <h6><?php echo formatDate($row["from_date"],'M');?><span><?php echo formatDate($row["from_date"],'d');?></span></h6>
                   </div>
                   <a href="meeting-details.html">
-                    <h4>Online Teaching Techniques</h4>
+                    <h4><?php echo $row["title"]?></h4>
                   </a>
-                  <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
+                  <p><?php echo $row["description"];?></p>
                 </div>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>$14.00</span>
-                  </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-03.jpg" alt="Higher Education"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>26</span></h6>
-                  </div>
-                  <a href="meeting-details.html">
-                    <h4>Higher Education Conference</h4>
-                  </a>
-                  <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
+            <?php  
+            }
+            ?>
+            
+            
+            
+            <!-- <div class="col-lg-6">
               <div class="meeting-item">
                 <div class="thumb">
                   <div class="price">
@@ -313,12 +299,12 @@ https://templatemo.com/tm-569-edu-meeting
                 </div>
               </div>
             </div> -->
-
           </div>
         </div>
       </div>
     </div>
   </section>
+
 
   <!-- <section class="apply-now" id="apply">
     <div class="container">
@@ -739,7 +725,7 @@ https://templatemo.com/tm-569-edu-meeting
   <section class="contact-us" id="contact">
     <div class="container">
       <div class="row">
-        <div class="col-lg-9 align-self-center">
+        <div class="col-lg-8 align-self-center">
           <div class="row">
             <div class="col-lg-12">
               <form id="contact" action="" method="post">
@@ -777,24 +763,24 @@ https://templatemo.com/tm-569-edu-meeting
             </div>
           </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
           <div class="right-info">
             <ul>
               <li>
                 <h6>Phone Number</h6>
-                <span>010-020-0340</span>
+                <span>+91 2622 290562</span>
               </li>
               <li>
                 <h6>Email Address</h6>
-                <span>info@meeting.edu</span>
+                <span>umafoundation123@gmail.com</span>
               </li>
               <li>
                 <h6>Street Address</h6>
-                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
+                <span>Uka Tarsadia university-Bardoli Gujarat</span>
               </li>
               <li>
                 <h6>Website URL</h6>
-                <span>www.meeting.edu</span>
+                <a href="https://umafoundation.site"><span>umafoundation.site</span></a>
               </li>
             </ul>
           </div>

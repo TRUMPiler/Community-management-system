@@ -249,12 +249,12 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" href="#">Deactivated</a>
+                                                                    <a class="dropdown-item" onclick="deactive(<?php echo $row['id'] ?>,0)">Deactivated</a>
+                                                                    <a class="dropdown-item" onclick="deactive(<?php echo $row['id'] ?>,1)">activated</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="../forms/edithallbooking.php?id=<?php echo $row["id"]; ?>">Edit</a>
 
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Edit</a>
-
-                                                                    </div>
+                                                                </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -331,22 +331,38 @@
         <script src="../../dist/js/demo.js"></script>
         <!-- Page specific script -->
         <script>
-            $(function() {
-                $("#example1").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
+        function deactive(id, status) {
+            $.ajax({
+                url: '../../../Ajax_file/changestatushallbooking.php',
+                data: {
+                    id: id,
+                    status: status
+                },
+                method: "POST",
+                success: function(response) {
+                    if (response == true) {
+                        alert("status is changed successfully")
+                        window.location = 'showhallbooking.php';
+                    }
+                }
+            })
+        }
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
             });
-        </script>
+        });
+    </script>
     </body>

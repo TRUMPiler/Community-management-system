@@ -213,20 +213,19 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Name</th>
-                                                    <th>Hall Name</th>
-                                                    <th>status</th>
-                                                    <th>Start date</th>
-                                                    <th>End date</th>
-                                                    <th>Request date</th>
-                                                    <th>Payment date</th>
-                                                    <th>Rent</th>
+                                                    <th>Capacity</th>
+                                                    <th>image</th>
+                                                    <th>address</th>
+                                                    <th>rent</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php 
                                                  include "../../../connect.php";
-                                                $query = "select hb.id,u.name,h.name,hb.status,hb.start_date_time,hb.end_date_time,hb.request_date,hb.payment_date,h.rent from tbl_hall_booking hb join  tbl_hall_master h on hb.hall_id=h.id join tbl_user u on hb.uid=u.id";
+                                                // $query = "select hb.id,u.name,h.name,hb.status,hb.start_date_time,hb.end_date_time,hb.request_date,hb.payment_date,h.rent from tbl_hall_booking hb join  tbl_hall_master h on hb.hall_id=h.id join tbl_user u on hb.uid=u.id";
+                                                $query = "select * from tbl_hall_master";
                                                 $result = mysqli_query($con, $query);
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
@@ -234,13 +233,12 @@
                                                         <tr>
                                                             <td><?php echo $row["id"]; ?></td>
                                                             <td><?php echo $row["name"]; ?></td>
-                                                            <td><?php echo $row["name"]; ?></td>
-                                                            <td><?php echo $row["status"]; ?></td>
-                                                            <td><?php echo $row["start_date_time"]; ?></td>
-                                                            <td><?php echo $row["end_date_time"]; ?></td>
-                                                            <td><?php echo $row["request_date"]; ?></td>
-                                                            <td><?php echo $row["payment_date"]; ?></td>
+                                                            <td><?php echo $row["capacity"]; ?></td>
+                                                            <td><?php echo $row["image"]; ?></td>
+                                                            <td><?php echo $row["address"]; ?></td>
                                                             <td><?php echo $row["rent"]; ?></td>
+                                                            <td><?php echo $row["status"]; ?></td>
+                                                            
                                 
                                                             <td>
                                                                 <div class="btn-group">
@@ -249,12 +247,12 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" href="#">Deactivated</a>
+                                                                    <a class="dropdown-item" onclick="deactive(<?php echo $row['id'] ?>,0)">Deactivated</a>
+                                                                    <a class="dropdown-item" onclick="deactive(<?php echo $row['id'] ?>,1)">activated</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="../forms/edithallmaster.php?id=<?php echo $row["id"]; ?>">Edit</a>
 
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Edit</a>
-
-                                                                    </div>
+                                                                </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -268,13 +266,11 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Name</th>
-                                                    <th>Hall Name</th>
-                                                    <th>status</th>
-                                                    <th>Start date</th>
-                                                    <th>End date</th>
-                                                    <th>Request date</th>
-                                                    <th>Payment date</th>
+                                                    <th>Capacity</th>
+                                                    <th>Image</th>
+                                                    <th>Address</th>
                                                     <th>Rent</th>
+                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </tfoot>
@@ -331,22 +327,38 @@
         <script src="../../dist/js/demo.js"></script>
         <!-- Page specific script -->
         <script>
-            $(function() {
-                $("#example1").DataTable({
-                    "responsive": true,
-                    "lengthChange": false,
-                    "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
+        function deactive(id, status) {
+            $.ajax({
+                url: '../../../Ajax_file/changestatushallmaster.php',
+                data: {
+                    id: id,
+                    status: status
+                },
+                method: "POST",
+                success: function(response) {
+                    if (response == true) {
+                        alert("status is changed successfully")
+                        window.location = 'showhall.php';
+                    }
+                }
+            })
+        }
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
             });
-        </script>
+        });
+    </script>
     </body>

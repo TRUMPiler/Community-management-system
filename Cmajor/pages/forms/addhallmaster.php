@@ -286,7 +286,7 @@
             const form = new FormData(this);
             console.log("running1")
             $.ajax({
-                url: '../../../Ajax_file/addhallmaster.php',
+                url: '../../../Ajax_file/edithallmaster.php',
                 method: 'POST',
                 data: form,
                 processData: false,
