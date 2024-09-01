@@ -1,9 +1,5 @@
 <?php
-// include "../../checkadmin.php" ;
-// if ($admin !=true) {
 
-// echo "<script>console.log('GG');window.location='../../../pages/Landing/index.php'</script>" ;
-// }
 function convertToWebPath($filesystemPath)
 {
     // Replace backslashes with forward slashes

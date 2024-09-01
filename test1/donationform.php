@@ -9,7 +9,7 @@ if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
 <html lang="en">
 
 <head>
-
+  <link rel="shortcut icon" href="../image/favicon.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -19,8 +19,9 @@ if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <title>Uma Foundation</title>
 
+  <link rel="stylesheet" href="styles.css">
   <!-- Bootstrap core CSS -->
-  <link href="test1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <style> 
   .autocomplete-suggestion {
@@ -34,10 +35,10 @@ if(!empty($_SESSION['username']) & !empty($_SESSION['password'])){
         }
 </style>
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="test1/assets/css/fontawesome.css">
-  <link rel="stylesheet" href="test1/assets/css/templatemo-edu-meeting.css">
-  <link rel="stylesheet" href="test1/assets/css/owl.css">
-  <link rel="stylesheet" href="test1/assets/css/lightbox.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/lightbox.css">
   <!--
 
 TemplateMo 569 Edu Meeting
@@ -149,7 +150,7 @@ https://templatemo.com/tm-569-edu-meeting
   </section> -->
   <!-- ***** Main Banner Area End ***** -->
 
-  <section class="services">
+  <!-- <section class="services">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -209,7 +210,7 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- <section class="upcoming-meetings" id="meetings">
     <div class="container">
@@ -741,111 +742,67 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-lg-9 align-self-center">
           <div class="row">
             <div class="col-lg-12">
-              <form id="donorForm" class="GG" action="#" method="post">
-              <!DOCTYPE html>
+            <main>
+        <div class="container">
+            <h2>Donation</h2>
+            <p><strong>Voluntary Support Donation :</strong></p>
+            <p>Donations will be eligible for deduction under Section 80G of the Income Tax Act, 1961.<br>
+               To receive an 80G certificate, PAN number is mandatory.</p>
 
-            <div class="row">
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="firstName" type="text" id="firstName" pattern="[A-Za-z ]*" minlength="2" placeholder="First Name" title="Please enter only alphabet characters!" required>
-                        <div id="firstName-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="middleName" type="text" id="middleName" pattern="[A-Za-z ]*" placeholder="Middle Name" title="Please enter only alphabet characters!">
-                        <div id="middleName-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="lastName" type="text" id="lastName" pattern="[A-Za-z ]*" minlength="2" placeholder="Last Name" title="Please enter only alphabet characters!" required>
-                        <div id="lastName-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="email" type="email" id="email" placeholder="Email" required>
-                        <div id="email-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="phone" type="tel" id="phone" pattern="[0-9]{10}" placeholder="Mobile Number" title="Please enter a 10-digit mobile number!" required>
-                        <div id="phone-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <textarea name="address" id="address" rows="4" placeholder="Address" required></textarea>
-                        <div id="address-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="city" type="text" id="city" placeholder="City" required>
-                        <div id="city-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="state" type="text" id="state" placeholder="State" required>
-                        <div id="state-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="zip" type="text" id="zip" pattern="[0-9]{5}" placeholder="Zip Code" title="Please enter a 5-digit zip code!" required>
-                        <div id="zip-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="country" type="text" id="country" placeholder="Country" required>
-                        <div id="country-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="pan" type="text" id="pan" placeholder="PAN Number" required>
-                        <div id="pan-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="donationAmount" type="number" id="donationAmount" min="1" placeholder="Donation Amount" required>
-                        <div id="donationAmount-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <input name="donationPurpose" type="text" id="donationPurpose" placeholder="Purpose of Donation" required>
-                        <div id="donationPurpose-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-6">
-                    <fieldset>
-                        <select name="certificate" id="certificate" required>
-                            <option value="">80G Certificate Required *</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
-                        </select>
-                        <div id="certificate-error" class="error"></div>
-                    </fieldset>
-                </div>
-                <div class="col-lg-12">
-                    <fieldset>
-                        <button type="submit">Submit</button>
-                        <button type="reset">Reset</button>
-                    </fieldset>
-                </div>
+            <h3>"I also want to be the foundation pillar in the construction of Jagatjanani Maa Umiya's historical temple, I am also the foundation pillar."</h3>
+            
+            
+            <?php 
+            include "../connect.php";
+            $query="select * from tbl_donation_type where status=1";
+            $result=mysqli_query($con,$query);
+            while($row=$result->fetch_assoc())
+            {
+              if($row["Name"]!="custom")
+              {
+              ?>
+              <div class="donation-option">
+                <p><?php echo $row["Name"];?><strong> <?php echo $row["price"];?></strong></p>
+                <?php 
+                if($row["quantitychangable"]==1)
+                {
+                  ?>
+                  <input type="number" name="number" value=1 id="<?php  echo  $row["id"];?>"><br>
+                  <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable'];?>,<?php  echo  $row['id'];?>)">Donate</button>
+                  <?php
+                }
+                else
+                {
+                  ?>
+                 
+                   <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable']?>,<?php  echo  $row['id'];?>)">Donate</button>
+                  <?php 
+                }
+              }
+              else
+              {
+                ?>
+                 <div class="donation-option">
+                <label for="customDonation">Donation Rs :</label>
+                <input type="number" id="<?php echo $row["id"];?>" value="100"  onchange="valuemeasure(<?php echo $row['id'];?>)" min="1">
+                <button type="button" onclick="donate('<?php echo $row['Name'];?>',1,<?php echo $row['quantitychangable'];?>,<?php echo $row['id'];?>)">Donate</button>
             </div>
-        </form>
-    </div>
-</body>
-</html>
+                <?php
+              }
+                ?>
+                
+            </div>
+              <?php
+            }
+            ?>
+           
+  
+           
 
-             
+            <p>You can donate in person at the office or temple at Jaspur.</p>
+            <p>Following are the other modes of payments for donations:</p>
+        </div>
+    </main>
             </div>
           </div>
         </div>
@@ -940,9 +897,38 @@ https://templatemo.com/tm-569-edu-meeting
   </script>
 </body>
 <script>
+  let quantity = 1;
+      function donate(name, price = 0, changeable,id) {
+    
+
+    if (changeable == 1 || changeable == true) {
+      
+      quantity=$("#"+id).val();
+    }
+
+  
+
+    window.location = 'donation.php?doname=' + name + '&doquan=' + quantity + '&doprice=' + (price * quantity);
+}
+function valuemeasure(id)
+{
+  if($("#"+id).val()<100)
+  {
+    alert("amount above 100rs will accepted only");
+  }
+  $("#"+id).val(100);
+}
+function removeSpaces(input) {
+    // Remove all spaces from the input string
+    var output = input.replace(/\s+/g, '');
+
+    // Print the modified string
+    console.log(output);
+}
+
     $(document).ready(function(){
        
-    
+      
     $('.GG').on('submit', function(e){
         e.preventDefault();
         let valid = true;
