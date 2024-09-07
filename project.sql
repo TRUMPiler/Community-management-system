@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2024 at 09:00 PM
+-- Generation Time: Sep 07, 2024 at 02:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -113,7 +113,22 @@ INSERT INTO `tbl_city` (`id`, `name`) VALUES
 (2, 'Surat'),
 (3, 'Vadodara'),
 (4, 'Rajkot'),
-(5, 'Bhavnagar');
+(5, 'Bhavnagar'),
+(6, 'Jamnagar'),
+(7, 'Junagadh'),
+(8, 'Gandhinagar '),
+(9, 'Anand'),
+(10, 'Vapi'),
+(11, 'Bharuch'),
+(12, 'Navsari'),
+(13, 'Patan'),
+(14, 'Porbandar'),
+(15, 'Nadiad'),
+(16, 'Morbi'),
+(17, 'Dahod'),
+(18, 'Mehsana'),
+(19, 'Surendranagar'),
+(20, 'Veraval');
 
 -- --------------------------------------------------------
 
@@ -217,7 +232,7 @@ CREATE TABLE `tbl_hall_booking` (
 
 INSERT INTO `tbl_hall_booking` (`id`, `uid`, `hall_id`, `status`, `start_date_time`, `end_date_time`, `request_date`, `transaction_id`, `payment_date`) VALUES
 (1, 3, 2, 1, '2024-08-22 16:45:12', '2024-08-14 16:45:12', '2024-08-07', 1, '2024-08-22'),
-(3, 4, 1, 1, '2024-08-03 20:49:00', '2024-08-09 20:49:00', '2024-08-01', 123, '2024-08-09'),
+(3, 4, 1, 0, '2024-08-03 20:49:00', '2024-08-09 20:49:00', '2024-08-01', 123, '2024-08-09'),
 (4, 5, 1, 1, '2024-08-29 20:50:00', '2024-09-06 20:51:00', '2024-08-30', 1212121, '2024-08-30');
 
 -- --------------------------------------------------------
@@ -329,8 +344,9 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `gender`, `dob`, `contactno`, `address`, `email`, `password`, `caste_certificate`, `status`, `role`, `cityid`) VALUES
 (3, 'Princy P Gandhi', 'princy', 0, '2022-01-01', '9876543215', 'skfjlksef', '22bmiit019@gmail.com', '486d975e9d1e757ea802bd1fed3af530', 'certificate/Screenshot 2024-03-03 123831.png', 0, 'Member', 2),
-(4, 'riddhi patel', 'riddhi', 0, '2004-09-18', '9065656656', 'All India Institute Of Medical Sciences (AIIMS) Rajkot, Gujarat, 360006, India', '22bmiit085@gmail.com', 'ea82cfca918c72a9deb5dbf38bbe38b0', 'certificate/File handling in PHP.pdf', 0, 'Member', 4),
-(5, 'Naishal Manish Doshi', 'Naishal', 0, '2015-02-10', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/IT3002 Practice List 02 (1).pdf', 0, 'Member', 2);
+(4, 'riddhi patel', 'riddhi', 1, '2004-09-18', '9065656656', 'All India Institute Of Medical Sciences (AIIMS) Rajkot, Gujarat, 360006, India', '22bmiit085@gmail.com', 'ea82cfca918c72a9deb5dbf38bbe38b0', 'certificate/File handling in PHP.pdf', 0, 'Member', 4),
+(5, 'Naishal Manish Doshi', 'Naishal', 0, '2015-02-10', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/IT3002 Practice List 02 (1).pdf', 0, 'Member', 2),
+(6, 'Princy P Gandhi', 'princy', 1, '2022-01-01', '9876543215', 'skfjlksef', '22bmiit019@gmail.com', '486d975e9d1e757ea802bd1fed3af530', 'certificate/Screenshot 2024-03-03 123831.png', 0, 'Member', 2);
 
 --
 -- Indexes for dumped tables
@@ -439,7 +455,7 @@ ALTER TABLE `tbl_announcement_type`
 -- AUTO_INCREMENT for table `tbl_city`
 --
 ALTER TABLE `tbl_city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbl_community_major_request`
@@ -493,7 +509,7 @@ ALTER TABLE `tbl_scholarship`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
