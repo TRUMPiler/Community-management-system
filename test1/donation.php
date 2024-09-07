@@ -2,46 +2,6 @@
 session_start();
 include '../connect.php';
 
-if (!empty($_SESSION['username']) && !empty($_SESSION['password'])) {
-    header("Location: index.php");
-}
-
-if (isset($_POST["login"])) {
-    $username = $_POST['username'];
-    $password = $_POST['pass'];
-    echo "yes";
-    if (!empty($username) && !empty($password)) {
-        $sql = "SELECT id, username, password, role 
-            FROM tbl_user 
-            WHERE username='$username' 
-            AND password='" . md5($password) . "' 
-            LIMIT 1";
-        $result = mysqli_query($con, $sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $_SESSION["id"] = $row["id"];
-                $_SESSION["username"] = $row['username'];
-                $_SESSION["password"] = $row['password'];
-                $_SESSION["role"] = $row['role'];
-                echo $row["role"];
-                if ($row['role'] == 'cMajor') {
-                    echo "<script>alert('Login is successful');window.location='committee_major.php'</script>";
-                } elseif ($row['role'] == 'cMember') {
-                    echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
-                } elseif ($row['role'] == 'Member') {
-                    echo "<script>alert('Login is successful');window.location='test1/index.php'</script>";
-                } elseif ($row['role'] == 'admin') {
-                    echo "<script>alert('Login is successful');window.location='Admin/index.php'</script>";
-                } else {
-                    echo "<script>alert('Login is unsuccessful1')</script>";
-                }
-            }
-        } else {
-            echo "<script>alert('Login is unsuccessful')</script>";
-        }
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
