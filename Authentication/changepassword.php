@@ -18,7 +18,7 @@ $mail->addAddress($_POST['email']);
 // $mail->addAddress('naishal036@gmail.com');
 $otp=random_int(10000,99999);
 $mail->isHTML(true);                       // Set email format to HTML
-$mail->Subject = 'OTP for Login';
+$mail->Subject = 'OTP for Account Recovery';
 // $mail->Body    = '<html><head><title></title></head><body>otp for your mail is<h1 style="color:lightblue;">'.$otp.'</h1></body></html>';
 $mail->Body="<!DOCTYPE html>
 <html lang='en'>
@@ -120,7 +120,7 @@ $mail->Body="<!DOCTYPE html>
     <div class='content'>
         <h1>Welcome To Uma Foundation!</h1>
         <img src='https://i.imgur.com/6ZESHdN.jpg' alt='otp verify image'> 
-        <p>We're excited to have you get started! First, you need to confirm your account. Please enter the otp in the asked page.</p>
+        <p>Hmm, Seams like you are trying to gain access back to you're account</p>
         <p id='color'>$otp</p>
         <p>If you have any questions, please feel free to contact us. We're always ready to help out.</p>
         <p>Cheers,</p>

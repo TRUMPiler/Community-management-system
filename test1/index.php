@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include "../connect.php";
+  // include "../connect.php";
   function formatDate($date,$format) {
     $dateTime = new DateTime($date);
     return $dateTime->format($format);

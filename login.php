@@ -40,8 +40,10 @@ if (isset($_POST["login"])) {
         } else {
             echo "<script>alert('Login is unsuccessful')</script>";
         }
+
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -784,6 +786,7 @@ https://templatemo.com/tm-569-edu-meeting
                                             <input type="password" name="pass" placeholder="PASSWORD" required>
                                         </fieldset>
                                     </div>
+                                   
                                     <!-- <div class="col-lg-4">
                     <fieldset>
                       <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="YOUR EMAIL..." required="">
@@ -822,6 +825,7 @@ https://templatemo.com/tm-569-edu-meeting
 
 
                                 </div>
+                            
                             </form>
                         </div>
                     </div>
@@ -851,7 +855,7 @@ https://templatemo.com/tm-569-edu-meeting
             </div>
         </div>
         <div class="footer">
-            <p>Copyright © 2024 Uma Foundation. All Rights Reserved.
+            <p>Copyright © 2024 Uma Foundation. All Rights Reserved.</p>
                 <!-- <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p> -->
         </div>
     </section>
