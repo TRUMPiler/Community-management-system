@@ -690,7 +690,7 @@ https://templatemo.com/tm-569-edu-meeting
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                        <input type="text" id="status" name="status" class="form-control" placeholder="Status" required>
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-6">

@@ -19,7 +19,7 @@ session_start();
         $city = $_POST["city"];
         $email = $_POST["email"];
         $pass = $_POST["password"];
-        $role = "not registered";
+        $role = "Not Verified";
        
         $query = "select * from  tbl_user where Email ='" .$_POST['email']."' limit 1";
         $result2 = mysqli_query($conn, $query);

@@ -79,13 +79,13 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
               Uma Foundation
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="../index.php" class="active"> Home </a></li>
+              <li class="scroll-to-section"><a href="index.php" class="active"> Home </a></li>
               <li><a href="meetings.html"> Hall Booking </a></li>
               <li class="scroll-to-section"><a href="#apply"> Donation </a></li>
               <li class="has-sub">
@@ -931,8 +931,7 @@ https://templatemo.com/tm-569-edu-meeting
 </body>
 <script>
     $(document).ready(function(){
-       
-    
+      
     $('.GG').on('submit', function(e){
         e.preventDefault();
         let valid = true;
@@ -1064,7 +1063,7 @@ https://templatemo.com/tm-569-edu-meeting
                 document.getElementById('suggestions').innerHTML = '';
                 return;
             }
-            const location = '23.204547904342565, 70.87135416153141';//23.204547904342565, 70.87135416153141
+            const location = '21.176633196051704,72.83300753723111';//23.204547904342565, 70.87135416153141
             const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
             const url = `https://api.olamaps.io/places/v1/autocomplete?location=${location}&input=${input}&api_key=${apiKey}`;
 
@@ -1137,7 +1136,7 @@ https://templatemo.com/tm-569-edu-meeting
                 for (let j = 0; j < addressComponents.length; j++) {
                     if (addressComponents[j].types.includes("administrative_area_level_1")) {
                         const locality = addressComponents[j].long_name;
-                        if (locality === "GUJARAT") {
+                        if (locality == "GUJARAT") {
 
                             return true;
                         } else {
@@ -1154,7 +1153,7 @@ https://templatemo.com/tm-569-edu-meeting
             var count = 0;
             var results = apiResponse.results;
             var sublocalities = new Set(); // Use a set to track unique sublocalities
-
+            console.log(apiResponse)
             for (let i = 0; i < results.length; i++) {
                 const addressComponents = results[i].address_components;
                 for (let j = 0; j < addressComponents.length; j++) {

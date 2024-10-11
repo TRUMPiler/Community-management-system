@@ -227,6 +227,7 @@ https://templatemo.com/tm-569-edu-meeting
             <h4> Announcement </h4>
             <ul>
             <?php 
+            include "../connect.php";
             $query="select * from tbl_announcement where status=1 ORDER BY id desc limit 10";
             $result=mysqli_query($con,$query);
             while($row=$result->fetch_assoc())

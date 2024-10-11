@@ -145,6 +145,7 @@
             $(document).ready(function() {
             $("#userotp").hide();
             $("#useremail").submit(function(event) {
+                $("#useremail").hide();
                 event.preventDefault();
                 $.ajax({
                     url: "./Authentication/changepassword.php",
