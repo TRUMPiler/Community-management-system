@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2024 at 02:19 PM
+-- Generation Time: Oct 12, 2024 at 03:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -57,7 +57,7 @@ CREATE TABLE `tbl_announcement` (
 --
 
 INSERT INTO `tbl_announcement` (`id`, `title`, `status`, `type_id`, `description`, `declaration_date`, `from_date`, `to_date`, `form`, `image`) VALUES
-(1, 'dance', 0, 1, 'hgjgyj', '2024-08-01', '2024-08-24', '2024-08-01', 'certificate/Screenshot 2024-03-03 123831.png', 'image/categories-01.jpg\r\n'),
+(1, 'dance', 1, 1, 'hgjgyj', '2024-08-01', '2024-08-24', '2024-08-01', 'certificate/Screenshot 2024-03-03 123831.png', 'image/categories-01.jpg\r\n'),
 (2, 'event1', 1, 3, 'vhvkjhbkjhl', '2024-08-02', '2024-08-17', '2024-08-29', 'm.png', 'image/event.jpg'),
 (3, 'event', 1, 3, 'kslakl', '2024-08-02', '2024-08-16', '2024-08-29', 'lklksl', 'image/event.jpg'),
 (4, 'Event Garba', 0, 1, 'oaopopo', '2024-08-02', '2024-08-08', '2024-08-16', 'ppos', 'image/event.jpg'),
@@ -256,7 +256,7 @@ CREATE TABLE `tbl_hall_master` (
 --
 
 INSERT INTO `tbl_hall_master` (`id`, `name`, `capacity`, `image`, `address`, `rent`, `status`) VALUES
-(1, 'sdnam', 50, 'certificate/Screenshot 2024-03-03 123831.png', 'djndkfl', 50000, 0),
+(1, 'sdnam', 50, 'certificate/Screenshot 2024-03-03 123831.png', 'djndkfl', 50000, 1),
 (2, 'Naishal Manish Doshi', 22, 'image/sigma cat.gif', 'trtr', 455, 1);
 
 -- --------------------------------------------------------
@@ -345,8 +345,9 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`id`, `name`, `username`, `gender`, `dob`, `contactno`, `address`, `email`, `password`, `caste_certificate`, `status`, `role`, `cityid`) VALUES
 (3, 'Princy P Gandhi', 'princy', 0, '2022-01-01', '9876543215', 'skfjlksef', '22bmiit019@gmail.com', '486d975e9d1e757ea802bd1fed3af530', 'certificate/Screenshot 2024-03-03 123831.png', 0, 'Member', 2),
 (4, 'riddhi patel', 'riddhi', 1, '2004-09-18', '9065656656', 'All India Institute Of Medical Sciences (AIIMS) Rajkot, Gujarat, 360006, India', '22bmiit085@gmail.com', 'ea82cfca918c72a9deb5dbf38bbe38b0', 'certificate/File handling in PHP.pdf', 0, 'Member', 4),
-(5, 'Naishal Manish Doshi', 'Naishal', 0, '2015-02-10', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/IT3002 Practice List 02 (1).pdf', 0, 'Member', 2),
-(6, 'Princy P Gandhi', 'princy', 1, '2022-01-01', '9876543215', 'skfjlksef', '22bmiit019@gmail.com', '486d975e9d1e757ea802bd1fed3af530', 'certificate/Screenshot 2024-03-03 123831.png', 0, 'Member', 2);
+(5, 'Naishal Manish Doshi', 'Naishal', 0, '2015-02-10', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'naishal036@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/IT3002 Practice List 02 (1).pdf', 1, 'Member', 2),
+(6, 'Princy P Gandhi', 'princy', 1, '2022-01-01', '9876543215', 'skfjlksef', '22bmiit019@gmail.com', '486d975e9d1e757ea802bd1fed3af530', 'certificate/Screenshot 2024-03-03 123831.png', 0, 'Member', 2),
+(7, 'Naishal Manish Doshi', 'NaishalDOshi', 0, '2023-02-28', '9326163059', 'Pratistha Apartments, Pragati Nagar, Piplod Jakatnaka, Pratistha Apartments, Piplod Main Road, Maheshwari Society, Krishnadham Society, Piplod, Surat, Gujarat, 395007, India', 'luminordelivery11@gmail.com', 'ef2bc263dfe4143ca13bee83cddbad25', 'certificate/srs final group.pdf', 0, 'Not Verified', 2);
 
 --
 -- Indexes for dumped tables
@@ -509,7 +510,7 @@ ALTER TABLE `tbl_scholarship`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

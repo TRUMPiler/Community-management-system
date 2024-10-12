@@ -1,7 +1,12 @@
 <?php
 session_start();
 include '../connect.php';
-
+if (!isset($_GET["doprice"]))
+{
+    ?>
+    <script>window.location='donationform.php'</script>
+    <?php
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,18 +117,18 @@ https://templatemo.com/tm-569-edu-meeting
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
-    <!-- <section class="section main-banner" id="top" data-section="section1">
-    <video autoplay muted loop id="bg-video">
+     <section class="section main-banner" id="top" data-section="section1">
+    <!-- <video autoplay muted loop id="bg-video">
       <source src="assets/images/course-video.mp4" type="video/mp4" />
-    </video>
+    </video> -->
 
     <div class="video-overlay header-text">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="caption"> -->
-    <!-- <h6>Hello Students</h6> -->
-    <!-- <h2> Welcome to Uma Foundation </h2>
+            <div class="caption">  
+     <h6>Hello Students</h6> 
+     <h2> Welcome to Uma Foundation </h2>
               <p> The Uma Foundation - Community Management System aims to develop an innovative and efficient online platform for managing various activities and services within the community. </p>
               <div class="main-button-red">
                 <div class="scroll-to-section"><a href="../Registration.php"> Registration!</a></div>
@@ -133,7 +138,7 @@ https://templatemo.com/tm-569-edu-meeting
         </div>
       </div>
     </div>
-  </section> -->
+  </section> 
     <!-- ***** Main Banner Area End ***** -->
 
 
@@ -685,7 +690,7 @@ https://templatemo.com/tm-569-edu-meeting
                                     </div>
                                     <div class="col-lg-6">
                                         <fieldset>
-                                        <input type="date" id="date" name="date" class="form-control" placeholder="Date" required>
+                                        <input type="date" id="date" name="date" class="form-control" placeholder="Date" value='<?php echo date("Y-m-d");?>' required disabled>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-6">
@@ -762,13 +767,13 @@ https://templatemo.com/tm-569-edu-meeting
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/isotope.min.js"></script>
+    <!-- <script src="assets/js/isotope.min.js"></script> -->
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/lightbox.js"></script>
     <script src="assets/js/tabs.js"></script>
     <script src="assets/js/video.js"></script>
     <script src="assets/js/slick-slider.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <!-- <script src="assets/js/custom.js"></script> -->
     <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');

@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,15 +22,35 @@ session_start();
 
   <style> 
   .autocomplete-suggestion {
-            padding: 10px;
-            cursor: pointer;
-            background-color: white;
-        }
+      padding: 10px 15px;
+      cursor: pointer;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 14px;
+      color: #555;
+      transition: background-color 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+  }
 
-        .autocomplete-suggestion:hover {
-            background-color: #f0f0f0;
-        }
+  .autocomplete-suggestion:hover {
+      background-color: #f7f7f7;
+      color: #333;
+  }
+
+  .autocomplete-suggestion.active {
+      background-color: #ececec;
+      color: #222;
+      font-weight: 600;
+  }
+
+  .autocomplete-suggestion:last-child {
+      border-bottom: none;
+  }
+
+  
 </style>
+
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
@@ -124,8 +143,8 @@ https://templatemo.com/tm-569-edu-meeting
   <!-- ***** Header Area End ***** -->
 
   <!-- ***** Main Banner Area Start ***** -->
-  <!-- <section class="section main-banner" id="top" data-section="section1">
-    <video autoplay muted loop id="bg-video">
+  <section class="section main-banner" id="top" data-section="section1">
+    <!-- <video autoplay muted loop id="bg-video">
       <source src="assets/images/course-video.mp4" type="video/mp4" />
     </video>
 
@@ -133,7 +152,7 @@ https://templatemo.com/tm-569-edu-meeting
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="caption"> -->
+            <div class="caption">  -->
   <!-- <h6>Hello Students</h6> -->
   <!-- <h2> Welcome to Uma Foundation </h2>
               <p> The Uma Foundation - Community Management System aims to develop an innovative and efficient online platform for managing various activities and services within the community. </p>
@@ -144,8 +163,8 @@ https://templatemo.com/tm-569-edu-meeting
           </div>
         </div>
       </div>
-    </div>
-  </section> -->
+    </div> -->
+  </section> 
   <!-- ***** Main Banner Area End ***** -->
 
   <!-- <section class="services">
@@ -839,13 +858,13 @@ https://templatemo.com/tm-569-edu-meeting
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <script src="assets/js/isotope.min.js"></script>
+  <!-- <script src="assets/js/isotope.min.js"></script> -->
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/lightbox.js"></script>
   <script src="assets/js/tabs.js"></script>
   <script src="assets/js/video.js"></script>
   <script src="assets/js/slick-slider.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <!--<script src="assets/js/custom.js"></script> -->
   <script>
     //according to loftblog tut
     $('.nav li:first').addClass('active');

@@ -71,6 +71,14 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="./forms/addhallmaster.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addhallmaster</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
                 <a href="./forms/addevent.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addevent</p>
@@ -82,6 +90,30 @@
                 <a href="./forms/addscholarship.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addscholarship</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./forms/addannouncement.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addannouncement</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./forms/addannouncementtype.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addannouncementtype</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./forms/addparticipation.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addparticipation</p>
                 </a>
               </li>
               </ul>
@@ -117,6 +149,14 @@
                 <a href="showannouncement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showannouncement</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="showannouncementtype.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>showannouncementtype</p>
                 </a>
               </li>
               </ul>

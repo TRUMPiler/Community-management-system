@@ -29,13 +29,7 @@
   <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/lightbox.css">
-  <!--
-  
-TemplateMo 569 Edu Meeting
 
-https://templatemo.com/tm-569-edu-meeting
-
--->
 <style>
   .ann-image{
     width: 396px;
@@ -88,7 +82,7 @@ https://templatemo.com/tm-569-edu-meeting
               <li class="has-sub">
                 <a href="javascript:void(0)"> Announcement </a>
                 <ul class="sub-menu">
-                  <li><a href="#"> Event </a></li>
+                  <li><a href="announcement.php"> Event </a></li>
                   <li><a href="#"> SchoralShip </a></li>
                 </ul>
               </li>
@@ -799,13 +793,13 @@ https://templatemo.com/tm-569-edu-meeting
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <script src="assets/js/isotope.min.js"></script>
+  <!--<script src="assets/js/isotope.min.js"></script> -->
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/lightbox.js"></script>
   <script src="assets/js/tabs.js"></script>
   <script src="assets/js/video.js"></script>
   <script src="assets/js/slick-slider.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <!--<script src="assets/js/custom.js"></script> -->
   <script>
     //according to loftblog tut
     $('.nav li:first').addClass('active');

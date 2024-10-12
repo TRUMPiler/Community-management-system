@@ -105,7 +105,7 @@ https://templatemo.com/tm-569-edu-meeting
               } else {
               ?>
                 <li class="scroll-to-section"><a href="../Registration.php"> Registration </a></li>
-                <li class="scroll-to-section"><a href="../login.php"> Login </a></li>
+                <li class="scroll-to-section"><a href="login.php"> Login </a></li>
               <?php
               }
 

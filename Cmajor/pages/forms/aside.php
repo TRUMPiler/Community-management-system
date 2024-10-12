@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
 
@@ -63,9 +63,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="addhall.php" class="nav-link">
+                <a href="addannouncement.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>addhalls</p>
+                  <p>addannouncement</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addannouncementtype.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addannouncementtype</p>
+                </a>
+              </li>
+              </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addhallmaster.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addhallmaster</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addhallbooking.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addhallbooking</p>
                 </a>
               </li>
               </ul>
@@ -85,6 +109,7 @@
                 </a>
               </li>
               </ul>
+              
              
        <li class="nav-item">
             <a href="#" class="nav-link">
@@ -96,12 +121,7 @@
             </a>
             <ul class="nav nav-treeview">
             
-              <li class="nav-item">
-                <a href="../tables/data.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>DataTables</p>
-                </a>
-              </li>
+             
              
             </ul>
             <ul class="nav nav-treeview">
@@ -109,6 +129,14 @@
                 <a href="../tables/showhall.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showhall</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="./tables/showhallbooking.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>showhallbooking</p>
                 </a>
               </li>
               </ul>
@@ -133,6 +161,22 @@
                 <a href="../tables/showscholarship.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>showscholarship</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../tables/showannouncement.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>showsannouncement</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../tables/showannouncementtype.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>showsannouncementtype</p>
                 </a>
               </li>
               </ul>

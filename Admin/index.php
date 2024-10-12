@@ -451,22 +451,7 @@
                         <!-- /.contacts-list-info -->
                       </a>
                     </li>
-                    <!-- End Contact Item -->
-                    <li>
-                      <a href="#">
-                        <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar">
-
-                        <div class="contacts-list-info">
-                          <span class="contacts-list-name">
-                            John K.
-                            <small class="contacts-list-date float-right">1/27/2015</small>
-                          </span>
-                          <span class="contacts-list-msg">Can I take a look at...</span>
-                        </div>
-                        <!-- /.contacts-list-info -->
-                      </a>
-                    </li>
-                    <!-- End Contact Item -->
+                    
                     <li>
                       <a href="#">
                         <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar">

@@ -125,7 +125,7 @@ https://templatemo.com/tm-569-edu-meeting
   <!-- ***** Header Area End ***** -->
 
   <!-- ***** Main Banner Area Start ***** -->
-  <!-- <section class="section main-banner" id="top" data-section="section1">
+   <section class="section main-banner" id="top" data-section="section1">
     <video autoplay muted loop id="bg-video">
       <source src="assets/images/course-video.mp4" type="video/mp4" />
     </video>
@@ -134,7 +134,7 @@ https://templatemo.com/tm-569-edu-meeting
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
-            <div class="caption"> -->
+            <div class="caption"> 
   <!-- <h6>Hello Students</h6> -->
   <!-- <h2> Welcome to Uma Foundation </h2>
               <p> The Uma Foundation - Community Management System aims to develop an innovative and efficient online platform for managing various activities and services within the community. </p>
@@ -145,8 +145,8 @@ https://templatemo.com/tm-569-edu-meeting
           </div>
         </div>
       </div>
-    </div>
-  </section> -->
+    </div>-->
+  </section> 
   <!-- ***** Main Banner Area End ***** -->
 
   <section class="services">

@@ -9,7 +9,7 @@
     <meta name="author" content="Template Mo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>Education Template - Meeting Detail Page</title>
+    <title>Uma Foundation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,17 +38,17 @@ https://templatemo.com/tm-569-edu-meeting
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-sm-8">
-          <div class="left-content">
+          <!-- <div class="left-content">
             <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
-          </div>
+          </div> -->
         </div>
         <div class="col-lg-4 col-sm-4">
           <div class="right-icons">
             <ul>
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href=""><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.instagram.com/_prachi13/"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/prachi-patel-a1768724b/"><i class="fa fa-linkedin"></i></a></li>
             </ul>
           </div>
         </div>
@@ -184,13 +184,13 @@ https://templatemo.com/tm-569-edu-meeting
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/isotope.min.js"></script>
+   <!-- <script src="assets/js/isotope.min.js"></script>-->
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/lightbox.js"></script>
     <script src="assets/js/tabs.js"></script>
     <script src="assets/js/video.js"></script>
     <script src="assets/js/slick-slider.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <!--<script src="assets/js/custom.js"></script>-->
     <script>
         //according to loftblog tut
         $('.nav li:first').addClass('active');
