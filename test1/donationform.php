@@ -784,7 +784,7 @@ https://templatemo.com/tm-569-edu-meeting
                 if($row["quantitychangable"]==1)
                 {
                   ?>
-                  <input type="number" name="number" value=1 id="<?php  echo  $row["id"];?>"><br>
+                  <input type="number" name="number"  value=1 id="<?php  echo  $row["id"];?>"><br>
                   <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable'];?>,<?php  echo  $row['id'];?>)">Donate</button>
                   <?php
                 }
@@ -920,20 +920,32 @@ https://templatemo.com/tm-569-edu-meeting
 
     if (changeable == 1 || changeable == true) {
       
+      
       quantity=$("#"+id).val();
     }
-
-  
-
+    if(price>100000||quantity>100000)
+    {
+      alert("amount above 100000rs cant be donated directly please call our head office to make this donation");
+    }
+  else
+  {
     window.location = 'donation.php?doname=' + name + '&doquan=' + quantity + '&doprice=' + (price * quantity);
+  }
+
+    
 }
 function valuemeasure(id)
 {
   if($("#"+id).val()<100)
   {
     alert("amount above 100rs will accepted only");
+   
   }
-  $("#"+id).val(100);
+  else if($("#"+id).val()>100000)
+  {
+    alert("amount above 100000rs cant be donated directly please call our head office to make this donation");
+    $("#"+id).val(100);
+  }
 }
 function removeSpaces(input) {
     // Remove all spaces from the input string
@@ -1062,148 +1074,6 @@ function removeSpaces(input) {
         }
     });
 });
-</script>
-<script>
-     function debounce(func, delay) {
-            let timeout;
-            return function(...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), delay);
-            };
-        }
-
-        const fetchSuggestions = debounce(function(input) {
-            if (input.length < 3) {
-                document.getElementById('suggestions').innerHTML = '';
-                return;
-            }
-            const location = '23.204547904342565, 70.87135416153141';//23.204547904342565, 70.87135416153141
-            const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
-            const url = `https://api.olamaps.io/places/v1/autocomplete?location=${location}&input=${input}&api_key=${apiKey}`;
-
-            fetch(url, {
-                    headers: {
-                        'X-Request-Id': 'your-request-id'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('API Response:', data);
-                    const suggestionsDiv = document.getElementById('suggestions');
-                    suggestionsDiv.innerHTML = '';
-                    if (data.predictions && data.predictions.length > 0) {
-                        data.predictions.forEach(prediction => {
-                            const suggestionDiv = document.createElement('div');
-                            suggestionDiv.className = 'autocomplete-suggestion';
-                            suggestionDiv.textContent = prediction.description; // Use 'description' property
-                            suggestionDiv.addEventListener('click', () => {
-                                const {
-                                    lat,
-                                    lng
-                                } = prediction.geometry.location;
-                                callcity(lat,lng);
-                                document.getElementById('address').value = prediction.description; // Use 'description' property
-                                suggestionsDiv.innerHTML = '';
-                            });
-                            suggestionsDiv.appendChild(suggestionDiv);
-                        });
-                    } else {
-                        console.error('No predictions found in the response');
-                    }
-                })
-                .catch(error => console.error('Error fetching autocomplete suggestions:', error));
-        }, 300);
-
-        document.getElementById('address').addEventListener('input', function() {
-            fetchSuggestions(this.value);
-        });
-        
-        function callcity(lat, log) {
-            var count = 0;
-            // const location = '19.265980587014074,72.96698942923868';
-            const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
-            const url = `https://api.olamaps.io/places/v1/reverse-geocode?latlng=${lat}%2C${log}&api_key=${apiKey}`;
-
-            fetch(url, {
-                    headers: {
-                        'X-Request-Id': 'your-request-id'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    // if (getstate(data) == false) {
-                    //     alert("The address should belong to Gujrat only");
-                    //     return;
-                    // }
-                    getcity(data);
-                    console.log(count++);
-                });
-        }
-        function getstate(apiResponse) {
-            var count = 0;
-            var results = apiResponse.results;
-            var sublocalities = new Set(); 
-
-            for (let i = 0; i < results.length; i++) {
-                const addressComponents = results[i].address_components;
-                for (let j = 0; j < addressComponents.length; j++) {
-                    if (addressComponents[j].types.includes("administrative_area_level_1")) {
-                        const locality = addressComponents[j].long_name;
-                        if (locality === "GUJARAT") {
-
-                            return true;
-                        } else {
-                            document.getElementById('address').value = '';
-                            return false;
-                        }
-                    }
-                }
-            }
-            alert(`No match found for sub-locality please choose manually`);
-            return;
-        }
-        function getcity(apiResponse) {
-            var count = 0;
-            var results = apiResponse.results;
-            var sublocalities = new Set(); // Use a set to track unique sublocalities
-
-            for (let i = 0; i < results.length; i++) {
-                const addressComponents = results[i].address_components;
-                for (let j = 0; j < addressComponents.length; j++) {
-                    if (addressComponents[j].types.includes("locality")) {
-                        const sublocality = addressComponents[j].long_name;
-                        if (!sublocalities.has(sublocality)) {
-                            sublocalities.add(sublocality);
-                            console.log(sublocality);
-                            if (matchAreaWithSublocality(sublocality) === "ok") {
-                                console.log("done");
-                                return;
-                            } else {
-
-                            }
-                        }
-                    }
-                }
-            }
-            alert(`No match found for sub-locality please choose manually`);
-            return null;
-        }
-        function matchAreaWithSublocality(sublocalityName) {
-            const areaSelect = document.getElementById('city');
-            const options = areaSelect.options;
-
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].text.toLowerCase() === sublocalityName.toLowerCase()) {
-                    areaSelect.value = options[i].value;
-                    console.log(`Matched area: ${options[i].text} with sub-locality: ${sublocalityName}`);
-
-                    return "ok";
-                }
-            }
-
-            return null;
-        }
 </script>
 
 

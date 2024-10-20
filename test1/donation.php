@@ -672,7 +672,7 @@ https://templatemo.com/tm-569-edu-meeting
                 <div class="col-lg-9 align-self-center">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="contact" action="#" method="post">
+                            <form id="donationform" action="#" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <h2>Donation Form</h2>
@@ -820,6 +820,34 @@ https://templatemo.com/tm-569-edu-meeting
         // $(window).scroll(function() {
         //   checkSection();
         // });
+
+
+        $(document).ready(function() {
+                $("#donationform").on("submit",function(event) {
+                    event.preventDefault();
+                    console.log("running");
+                    const form=new FormData(this);
+                    $.ajax({
+                        url:'donationback.php',
+                        method:'POST',
+                        data:form,
+                        processData:false,
+                        contentType:false,
+                        success:function(response){
+                           if(response==true)
+                           {
+                                alert("donation successfull");
+                                window.location='';
+                           }
+                           else
+                           {
+
+                            alert(response);
+                           }
+                        }
+                    })
+                })
+            })
     </script>
 </body>
 
