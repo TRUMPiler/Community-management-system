@@ -920,7 +920,9 @@ https://templatemo.com/tm-569-edu-meeting
 
     if (changeable == 1 || changeable == true) {
       
-      
+      $.ajax({url:"../Ajax_file/storetypeid.php",data:{
+        typeid:id,
+      },type:"POST",success:function(){}})
       quantity=$("#"+id).val();
     }
     if(price>100000||quantity>100000)
