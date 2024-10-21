@@ -843,19 +843,19 @@ https://templatemo.com/tm-569-edu-meeting
                         <ul>
                             <li>
                                 <h6>Phone Number</h6>
-                                <span>010-020-0340</span>
+                                <span>+91 2622 290562</span>
                             </li>
                             <li>
                                 <h6>Email Address</h6>
-                                <span>info@meeting.edu</span>
+                                <span>umafoundation123@gmail.com</span>
                             </li>
                             <li>
                                 <h6>Street Address</h6>
-                                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
+                                <span>Uka Tarsadia university-Bardoli Gujarat</span>
                             </li>
                             <li>
                                 <h6>Website URL</h6>
-                                <span>www.meeting.edu</span>
+                                <span>umafoundation.site</span>
                             </li>
                         </ul>
                     </div>
