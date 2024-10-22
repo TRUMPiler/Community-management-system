@@ -87,11 +87,11 @@ https://templatemo.com/tm-569-edu-meeting
             <ul class="nav">
               <li class="scroll-to-section"><a href="index.php" class="active"> Home </a></li>
               <li><a href="meetings.html"> Hall Booking </a></li>
-              <li class="scroll-to-section"><a href="#apply"> Donation </a></li>
+              <li class="scroll-to-section"><a href="test1/donationform.php"> Donation </a></li>
               <li class="has-sub">
                 <a href="javascript:void(0)"> Announcement </a>
                 <ul class="sub-menu">
-                  <li><a href="meetings.html"> Event </a></li>
+                  <li><a href="test1/announcement.php"> Event </a></li>
                   <li><a href="meeting-details.html"> SchoralShip </a></li>
 
                 </ul>
@@ -100,11 +100,11 @@ https://templatemo.com/tm-569-edu-meeting
               <?php
               if (isset($_SESSION["id"])) {
               ?>
-                <li class="scroll-to-section"><a href="../logout.php"> Logout </a></li>
+                <li class="scroll-to-section"><a href="logout.php"> Logout </a></li>
               <?php
               } else {
               ?>
-                <li class="scroll-to-section"><a href="../Registration.php"> Registration </a></li>
+                <li class="scroll-to-section"><a href="Registration.php"> Registration </a></li>
                 <li class="scroll-to-section"><a href="login.php"> Login </a></li>
               <?php
               }

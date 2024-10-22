@@ -20,10 +20,10 @@ session_start();
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="test1/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="test1/assets/css/templatemo-edu-meeting.css">
-    <link rel="stylesheet" href="test1/assets/css/owl.css">
-    <link rel="stylesheet" href="test1/assets/css/lightbox.css">
+    <link rel="stylesheet" href="../test1/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../test1/assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="../test1/assets/css/owl.css">
+    <link rel="stylesheet" href="../test1/assets/css/lightbox.css">
     <!--
 
 TemplateMo 569 Edu Meeting

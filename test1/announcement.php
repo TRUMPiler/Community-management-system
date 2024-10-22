@@ -1,3 +1,7 @@
+<?php 
+
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +33,7 @@ https://templatemo.com/tm-569-edu-meeting
 -->
   </head>
 
-<body>
-
-   
+<body>   
 
   <!-- Sub Header -->
   <div class="sub-header">
@@ -69,24 +71,18 @@ https://templatemo.com/tm-569-edu-meeting
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li class="scroll-to-section"><a href="../index.php" class="active"> Home </a></li>
-                          <li><a href="#"> Hall Booking </a></li>
-                          <li class="scroll-to-section"><a href="#"> Donation </a></li>
-                          <li class="has-sub">
-                            <a href="javascript:void(0)"> Announcement </a>
-                              <ul class="sub-menu">
-                                <li><a href="#"> Event </a></li>
-                                <li><a href="#"> SchoralShip </a></li>
-                              </ul>
-                          </li>
-                      <li class="has-sub">
-                        <a href="javascript:void(0)"> Apply </a>
-                        <ul class="sub-menu">
-                          <li><a href="#">Committe Member</a></li>
-                          <li><a href="#">Committe Major</a></li>
-                        </ul>
-                      </li>
-              
+              <li class="scroll-to-section"><a href="../index.php" class="active"> Home </a></li>
+              <li><a href="meetings.html"> Hall Booking </a></li>
+              <li><a href="donationform.php"> Donation </a></li>
+              <li class="has-sub">
+                <a href=""> Announcement </a>
+                <ul class="sub-menu">
+                  <li><a href="announcement.php"> Event </a></li>
+                  <li><a href="meeting-details.html"> SchoralShip </a></li>
+
+                </ul>
+              </li>
+
               <?php
               if (isset($_SESSION["id"])) {
               ?>
@@ -100,10 +96,12 @@ https://templatemo.com/tm-569-edu-meeting
               }
 
               ?>
-                      </ul>        
-                      <a class='menu-trigger'>
-                          <span>Menu</span>
-                      </a>
+
+
+            </ul>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
                       <!-- ***** Menu End ***** -->
                   </nav>
               </div>
@@ -138,26 +136,34 @@ https://templatemo.com/tm-569-edu-meeting
                 </ul>
               </div>
             </div>
+            <?php
+              include '../connect.php';
+              $query="SELECT *, 
+               DATE_FORMAT(declaration_date, '%M') AS formatted_date, 
+               DATE_FORMAT(declaration_date, '%d') AS formatted_datee
+        FROM tbl_announcement";
+              $qu = mysqli_query($con, $query);
+              while ($row = mysqli_fetch_assoc($qu)) { ?>
+              
+            
             <div class="col-lg-12">
               <div class="row grid">
-                <div class="col-lg-4 templatemo-item-col all soon">
+                <div class="col-lg-4 templatemo-item-col">
                   <div class="meeting-item">
                     <div class="thumb">
-                      <div class="price">
-                        <span>$14.00</span>
-                      </div>
-                      <a href="announcement-details.php"><img src="assets/images/meeting-01.jpg" alt=""></a>
+                      <a href="announcement-details.php"><img src="../<?php echo $row['image'] ;?>" alt=""></a>
                     </div>
                     <div class="down-content">
                       <div class="date">
-                        <h6>Nov <span>12</span></h6>
+                        <h6><?php echo $row['formatted_date'] ;?> <span><?php echo $row['formatted_datee'] ;?></span></h6>
                       </div>
-                      <a href="announcement-details.php"><h4>New Lecturers Meeting</h4></a>
-                      <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
+                      <a href="announcement-details.php"><h4><?php echo $row['title'] ;?></h4></a>
+                      <p><?php echo $row['description'] ;?></p>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 templatemo-item-col all imp">
+                <?php } ?>
+                <!-- <div class="col-lg-4 templatemo-item-col all imp">
                   <div class="meeting-item">
                     <div class="thumb">
                       <div class="price">
@@ -294,7 +300,7 @@ https://templatemo.com/tm-569-edu-meeting
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="col-lg-12">
               <div class="pagination">
                 <ul>
@@ -310,8 +316,8 @@ https://templatemo.com/tm-569-edu-meeting
       </div>
     </div>
     <div class="footer">
-      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved. 
-          <br>Design: <a href="https://templatemo.com/page/1" target="_parent" title="website templates">TemplateMo</a></p>
+      <p>Copyright © 2024 Uma Foundation. All Rights Reserved.
+        <!-- <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p> -->
     </div>
   </section>
 

@@ -9,7 +9,7 @@
     <meta name="author" content="Template Mo">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <title>Education Template - Announcement Detail Page</title>
+    <title>Uma Foundation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,16 +39,16 @@ https://templatemo.com/tm-569-edu-meeting
       <div class="row">
         <div class="col-lg-8 col-sm-8">
           <div class="left-content">
-            <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p>
+            <!-- <p>This is an educational <em>HTML CSS</em> template by TemplateMo website.</p> -->
           </div>
         </div>
         <div class="col-lg-4 col-sm-4">
           <div class="right-icons">
             <ul>
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
-              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href=""><i class="fa fa-twitter"></i></a></li>
+              <li><a href="https://www.instagram.com/_prachi13/"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/prachi-patel-a1768724b/"><i class="fa fa-linkedin"></i></a></li>
             </ul>
           </div>
         </div>
@@ -64,23 +64,42 @@ https://templatemo.com/tm-569-edu-meeting
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
                       <a href="index.php" class="logo">
-                          Edu Announcement
+                          Uma Foundation
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li><a href="index.php">Home</a></li>
-                          <li><a href="announcement.php" class="active">Announcements</a></li>
-                          <li><a href="index.php">Apply Now</a></li>
+                          <li class="scroll-to-section"><a href="../index.php" class="active"> Home </a></li>
+                          <li><a href="#"> Hall Booking </a></li>
+                          <li class="scroll-to-section"><a href="#"> Donation </a></li>
                           <li class="has-sub">
-                              <a href="javascript:void(0)">Pages</a>
+                            <a href="javascript:void(0)"> Announcement </a>
                               <ul class="sub-menu">
-                                  <li><a href="announcement.php">Upcoming Announcements</a></li>
-                                  <li><a href="announcement-details.html">Announcements Details</a></li>
+                                <li><a href="#"> Event </a></li>
+                                <li><a href="#"> SchoralShip </a></li>
                               </ul>
                           </li>
-                          <li><a href="index.php">Courses</a></li> 
-                          <li><a href="index.php">Contact Us</a></li> 
+                      <li class="has-sub">
+                        <a href="javascript:void(0)"> Apply </a>
+                        <ul class="sub-menu">
+                          <li><a href="#">Committe Member</a></li>
+                          <li><a href="#">Committe Major</a></li>
+                        </ul>
+                      </li>
+              
+              <?php
+              if (isset($_SESSION["id"])) {
+              ?>
+                <li class="scroll-to-section"><a href="../logout.php"> Logout </a></li>
+              <?php
+              } else {
+              ?>
+                <li class="scroll-to-section"><a href="../Registration.php"> Registration </a></li>
+                <li class="scroll-to-section"><a href="../login.php"> Login </a></li>
+              <?php
+              }
+
+              ?>
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>
@@ -98,12 +117,18 @@ https://templatemo.com/tm-569-edu-meeting
       <div class="row">
         <div class="col-lg-12">
           <h6>Get all details</h6>
-          <h2>Online Teaching and Learning Tools</h2>
+          <h2>Announcement Details</h2>
         </div>
       </div>
     </div>
   </section>
+  <?php 
+    include '../connect.php';
 
+    $query = "select * from tbl_announcement";
+    $qu = mysqli_query($con, $query);
+    
+  ?>
   <section class="meetings-page" id="meetings">
     <div class="container">
       <div class="row">

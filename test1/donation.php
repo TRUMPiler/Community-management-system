@@ -8,22 +8,6 @@ if (!isset($_GET["doprice"]))
     <?php
 }
 ?>
-<?php 
-require('../razorpay-php-2.9.0/Razorpay.php');
-use Razorpay\Api\Api;
-
-$api = new Api('rzp_test_qxeuAYL6jOqDSW', 'IxoRKz8mHWNvDpWmN5n74wpI');
-$orderData = [
-    'receipt'         => 'order_rcptid_11',
-    'amount'          => $_GET["doprice"]*100, // amount in the smallest currency unit (e.g., 50000 paise = ₹500)
-    'currency'        => 'INR',
-    'payment_capture' => 1 // auto-capture payment after authorization
-];
-
-$razorpayOrder = $api->order->create($orderData);
-$razorpayOrderId = $razorpayOrder['id'];
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,9 +30,13 @@ $razorpayOrderId = $razorpayOrder['id'];
     <link rel="stylesheet" href="assets/css/templatemo-edu-meeting.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <script
-        
-        src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!--
+
+TemplateMo 569 Edu Meeting
+
+https://templatemo.com/tm-569-edu-meeting
+
+-->
 </head>
 
 <body>
@@ -684,7 +672,7 @@ $razorpayOrderId = $razorpayOrder['id'];
                 <div class="col-lg-9 align-self-center">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="contact" class="ss">
+                            <form id="contact" action="#" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <h2>Donation Form</h2>
@@ -697,7 +685,7 @@ $razorpayOrderId = $razorpayOrder['id'];
                                     <!-- <div class="col-lg-11"></div> -->
                                     <div class="col-lg-6">
                                         <fieldset>
-                                        <input type="number" id="amount" name="amount" value="<?php echo $_GET["doprice"];?>" readonly>
+                                        <input type="text" id=""  value="<?php echo $_GET["doprice"];?>" disabled>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-6">
@@ -740,7 +728,6 @@ $razorpayOrderId = $razorpayOrder['id'];
 
 
                                 </div>
-                              
                             </form>
                         </div>
                     </div>
@@ -833,74 +820,6 @@ $razorpayOrderId = $razorpayOrder['id'];
         // $(window).scroll(function() {
         //   checkSection();
         // });
-        $(document).ready(function() {
-    $(".ss").on("submit", function(event) {
-        event.preventDefault(); // Prevent form submission
-
-        const form = new FormData(this); // Get form data
-
-        // Create Razorpay options
-        $.ajax({
-            url: 'verifydonationpayment.php', // Server-side script that creates Razorpay order
-            method: 'POST',
-            data: form,
-            processData: false,
-            contentType: false,
-            dataType:"json",
-            success: function(response) {
-                if(response.order_id!=null) { // Check if the order_id is returned
-                    // Proceed with Razorpay payment
-                    var options = {
-                        "key": "rzp_test_qxeuAYL6jOqDSW", // Razorpay API key
-                        "amount": response.amount, // Amount from server
-                        "currency": "INR",
-                        "order_id": response.order_id, // Order ID from Razorpay
-                        "name": "Uma Foundation",
-                        "description": "Donation Transaction",
-                        "image": "../background1.jpg",
-                        "prefill": {
-                            "name": response.donor_name, // Name from the form
-                            "email": response.email, // Email from the form
-                            "contact": response.contact // Contact from the form
-                        },
-                        "theme": {
-                            "color": "#2986cc"
-                        },
-                        "handler": function(paymentResponse) {
-                            // Once the payment is successful, submit the payment details via AJAX
-                            $.ajax({
-                                url: './payment_handler.php', // Combined handler script
-                                method: 'POST',
-                                data: {
-                                    payment_id: paymentResponse.razorpay_payment_id,
-                                    order_id: paymentResponse.razorpay_order_id,
-                                    signature: paymentResponse.razorpay_signature,
-                                    name: form.get('name'), // Send other form details along with payment info
-                                    date: form.get('date'),
-                                    typeid: form.get('typeid')
-                                },
-                                success: function(response) {
-                                    if(response == true) {
-                                        alert("Donation successful");
-                                        window.location.reload(); // Reload after success
-                                    } else {
-                                        alert(response); // Show any error messages
-                                    }
-                                }
-                            });
-                        }
-                    };
-                    var rzp1 = new Razorpay(options); // Initialize Razorpay
-                    rzp1.open(); // Open Razorpay payment popup
-                } else {
-                    alert(response); // Handle errors from order creation
-                }
-            }
-        });
-    });
-});
-
-
     </script>
 </body>
 

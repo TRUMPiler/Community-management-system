@@ -124,11 +124,11 @@ https://templatemo.com/tm-569-edu-meeting
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="index.php" class="active"> Home </a></li>
                             <li><a href="#"> Hall Booking </a></li>
-                            <li class="scroll-to-section"><a href="#"> Donation </a></li>
+                            <li class="scroll-to-section"><a href="test1/donationform.php"> Donation </a></li>
                             <li class="has-sub">
                                 <a href="javascript:void(0)"> Announcement </a>
                                 <ul class="sub-menu">
-                                    <li><a href="#"> Event </a></li>
+                                    <li><a href="test1/announcement.php"> Event </a></li>
                                     <li><a href="#"> SchoralShip </a></li>
 
                                 </ul>
@@ -843,19 +843,19 @@ https://templatemo.com/tm-569-edu-meeting
                         <ul>
                             <li>
                                 <h6>Phone Number</h6>
-                                <span>+91 2622 290562</span>
+                                <span>010-020-0340</span>
                             </li>
                             <li>
                                 <h6>Email Address</h6>
-                                <span>umafoundation123@gmail.com</span>
+                                <span>info@meeting.edu</span>
                             </li>
                             <li>
                                 <h6>Street Address</h6>
-                                <span>Uka Tarsadia university-Bardoli Gujarat</span>
+                                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
                             </li>
                             <li>
                                 <h6>Website URL</h6>
-                                <span>umafoundation.site</span>
+                                <span>www.meeting.edu</span>
                             </li>
                         </ul>
                     </div>

@@ -30,7 +30,9 @@
                 <li> <a href="donation.php"> Donation </a> </li>
                 <li> <a href="scholarship.php"> SchoralShip </a> </li>
                 <li> <a href="Registration.php"> Registration </a> </li>
+                <li> <a href="profile.php"> Profile </a> </li>
                 <li> <a href="login.php"> Login </a> </li>
+                
             </ul>
         </nav>
     </header>

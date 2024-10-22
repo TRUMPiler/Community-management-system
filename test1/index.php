@@ -78,7 +78,7 @@
             <ul class="nav">
               <li class="scroll-to-section"><a href="../index.php" class="active"> Home </a></li>
               <li><a href="#"> Hall Booking </a></li>
-              <li class="scroll-to-section"><a href="#"> Donation </a></li>
+              <li class="scroll-to-section"><a href="donation.php"> Donation </a></li>
               <li class="has-sub">
                 <a href="javascript:void(0)"> Announcement </a>
                 <ul class="sub-menu">
@@ -97,6 +97,7 @@
               <?php
               if (isset($_SESSION["id"])) {
               ?>
+              <li class="scroll-to-section"><a href="../Ajax_file/profile.php"> Profile </a></li>
                 <li class="scroll-to-section"><a href="../logout.php"> Logout </a></li>
               <?php
               } else {
@@ -236,7 +237,7 @@
               <li><a href="#"> Diwali </a></li> -->
             </ul>
             <div class="main-button-red">
-              <a href="meetings.html"> All Upcoming Events </a>
+              <a href="announcement.php"> All Upcoming Events </a>
             </div>
           </div>
         </div>

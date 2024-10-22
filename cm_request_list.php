@@ -70,7 +70,7 @@ $result = mysqli_query($con, $query);
                     echo "<script> window.location='cm_request_list.php'  </script>";
                 }
             }echo  "</form>";} else { echo $row['status'];}?></td>
-                </tr>
+                </tr> 
                 <?php endwhile; ?>
             </tbody>
         </table>

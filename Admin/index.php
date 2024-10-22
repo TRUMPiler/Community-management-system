@@ -268,7 +268,7 @@
           <!-- Left col -->
           <section class="col-lg-7 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
-            <div class="card">
+            <!-- <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
@@ -284,11 +284,11 @@
                     </li>
                   </ul>
                 </div>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content p-0">
+              </div>/.card-header -->
+              <!-- <div class="card-body">
+                <div class="tab-content p-0"> -->
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
+                  <!-- <div class="chart tab-pane active" id="revenue-chart"
                        style="position: relative; height: 300px;">
                       <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
                    </div>
@@ -296,12 +296,12 @@
                     <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
                   </div>
                 </div>
-              </div><!-- /.card-body -->
-            </div>
+              </div>/.card-body
+            </div> -->
             <!-- /.card -->
 
             <!-- DIRECT CHAT -->
-            <div class="card direct-chat direct-chat-primary">
+            <!-- <div class="card direct-chat direct-chat-primary">
               <div class="card-header">
                 <h3 class="card-title">Direct Chat</h3>
 
@@ -317,80 +317,80 @@
                     <i class="fas fa-times"></i>
                   </button>
                 </div>
-              </div>
+              </div> -->
               <!-- /.card-header -->
-              <div class="card-body">
+              <!-- <div class="card-body"> -->
                 <!-- Conversations are loaded here -->
-                <div class="direct-chat-messages">
+                <!-- <div class="direct-chat-messages"> -->
                   <!-- Message. Default to the left -->
-                  <div class="direct-chat-msg">
+                  <!-- <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
                       <span class="direct-chat-name float-left">Alexander Pierce</span>
                       <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-infos -->
-                    <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                    <!-- <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image"> -->
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
+                    <!-- <div class="direct-chat-text">
                       Is this template really for free? That's unbelievable!
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-text -->
-                  </div>
+                  <!-- </div> -->
                   <!-- /.direct-chat-msg -->
 
                   <!-- Message to the right -->
-                  <div class="direct-chat-msg right">
+                  <!-- <div class="direct-chat-msg right">
                     <div class="direct-chat-infos clearfix">
                       <span class="direct-chat-name float-right">Sarah Bullock</span>
                       <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-infos -->
-                    <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                    <!-- <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"> -->
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
+                    <!-- <div class="direct-chat-text">
                       You better believe it!
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-text -->
-                  </div>
+                  <!-- </div> -->
                   <!-- /.direct-chat-msg -->
 
                   <!-- Message. Default to the left -->
-                  <div class="direct-chat-msg">
+                  <!-- <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
                       <span class="direct-chat-name float-left">Alexander Pierce</span>
                       <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-infos -->
-                    <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                    <!-- <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image"> -->
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
+                    <!-- <div class="direct-chat-text">
                       Working with AdminLTE on a great new app! Wanna join?
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-text -->
-                  </div>
+                  <!-- </div> -->
                   <!-- /.direct-chat-msg -->
 
                   <!-- Message to the right -->
-                  <div class="direct-chat-msg right">
+                  <!-- <div class="direct-chat-msg right">
                     <div class="direct-chat-infos clearfix">
                       <span class="direct-chat-name float-right">Sarah Bullock</span>
                       <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-infos -->
-                    <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                    <!-- <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"> -->
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
+                    <!-- <div class="direct-chat-text">
                       I would love to.
-                    </div>
+                    </div> -->
                     <!-- /.direct-chat-text -->
-                  </div>
+                  <!-- </div> -->
                   <!-- /.direct-chat-msg -->
 
-                </div>
+                <!-- </div> -->
                 <!--/.direct-chat-messages-->
 
                 <!-- Contacts are loaded here -->
-                <div class="direct-chat-contacts">
+                <!-- <div class="direct-chat-contacts">
                   <ul class="contacts-list">
                     <li>
                       <a href="#">
@@ -402,12 +402,12 @@
                             <small class="contacts-list-date float-right">2/28/2015</small>
                           </span>
                           <span class="contacts-list-msg">How have you been? I was...</span>
-                        </div>
+                        </div> -->
                         <!-- /.contacts-list-info -->
-                      </a>
-                    </li>
+                      <!-- </a>
+                    </li> -->
                     <!-- End Contact Item -->
-                    <li>
+                    <!-- <li>
                       <a href="#">
                         <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar">
 
@@ -417,12 +417,12 @@
                             <small class="contacts-list-date float-right">2/23/2015</small>
                           </span>
                           <span class="contacts-list-msg">I will be waiting for...</span>
-                        </div>
+                        </div> -->
                         <!-- /.contacts-list-info -->
-                      </a>
-                    </li>
+                      <!-- </a>
+                    </li> -->
                     <!-- End Contact Item -->
-                    <li>
+                    <!-- <li>
                       <a href="#">
                         <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar">
 
@@ -432,12 +432,12 @@
                             <small class="contacts-list-date float-right">2/20/2015</small>
                           </span>
                           <span class="contacts-list-msg">I'll call you back at...</span>
-                        </div>
+                        </div> -->
                         <!-- /.contacts-list-info -->
-                      </a>
-                    </li>
+                      <!-- </a>
+                    </li> -->
                     <!-- End Contact Item -->
-                    <li>
+                    <!-- <li>
                       <a href="#">
                         <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar">
 
@@ -447,9 +447,9 @@
                             <small class="contacts-list-date float-right">2/10/2015</small>
                           </span>
                           <span class="contacts-list-msg">Where is your new...</span>
-                        </div>
+                        </div> -->
                         <!-- /.contacts-list-info -->
-                      </a>
+                      <!-- </a>
                     </li>
                     
                     <li>
@@ -462,18 +462,18 @@
                             <small class="contacts-list-date float-right">1/4/2015</small>
                           </span>
                           <span class="contacts-list-msg">Never mind I found...</span>
-                        </div>
+                        </div> -->
                         <!-- /.contacts-list-info -->
-                      </a>
-                    </li>
+                      <!-- </a>
+                    </li> -->
                     <!-- End Contact Item -->
-                  </ul>
+                  <!-- </ul> -->
                   <!-- /.contacts-list -->
-                </div>
+                <!-- </div> -->
                 <!-- /.direct-chat-pane -->
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
+              <!-- <div class="card-footer">
                 <form action="#" method="post">
                   <div class="input-group">
                     <input type="text" name="message" placeholder="Type Message ..." class="form-control">
@@ -482,9 +482,9 @@
                     </span>
                   </div>
                 </form>
-              </div>
+              </div> -->
               <!-- /.card-footer-->
-            </div>
+            <!-- </div> -->
             <!--/.direct-chat -->
 
             <!-- TO DO List -->
