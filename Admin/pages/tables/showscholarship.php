@@ -199,7 +199,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Donation</h3>
+                                        <h3 class="card-title">Scholarship</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -254,6 +254,7 @@
                                                             <td><?php echo $row["bank_name"]; ?></td>
                                                             <td><?php echo $row["bank_ifsc_code"]; ?></td>
                                                             <td><?php echo $row["account_no"]; ?></td>
+
                                                             <td><a target="blank" href="../../../<?php
                                                              echo convertToWebPath($row["income_certificate"]); ?>">Click here</a></td>
                                                             <td><a target="blank" href="../../../<?php
@@ -265,12 +266,18 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" href="#">Deactivated</a>
-
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Edit</a>
-
-                                                                    </div>
+                                                                <?php
+                                                                if ($row["status"] == 0) {
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="changestatus(<?php echo $row['id'] ?>,1)">Activate</a>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="changestatus(<?php echo $row['id'] ?>,0)">Deactivate</a>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -374,5 +381,26 @@
                 });
             });
         </script>
+        <script>
+            function changestatus(id, status) {
+            $.ajax({
+                url: '../../../Ajax_file/changestatusscholarship.php',
+                method: 'POST',
+                data: {
+                    id: id,
+                    status: status,
+                },
+                success: function(response) {
+                    if (response == true) {
+                        alert("Status updated Successfully!");
+                        window.location = "showscholarship.php";
+                    } else {
+                        alert("Problem Occured!");
+                        alert(response);
+                    }
+                }
+            })
+        }
+    </script>
     </body>
     </html>

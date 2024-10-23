@@ -14,6 +14,18 @@ $razorpayOrder = $api->order->create($orderData);
 $razorpayOrderId = $razorpayOrder['id'];
 
 ?>
+<html>
+    <head>
+        <style>
+            body{
+                background-image: url('test1/assets/images/meetings-bg.jpg');
+            };
+            </style>
+            
+</head>
+<body>
+    
+
 <form action="verifypayment.php" method="POST">
     <script
         src="https://checkout.razorpay.com/v1/checkout.js"
@@ -32,3 +44,5 @@ $razorpayOrderId = $razorpayOrder['id'];
     ></script>
     <input type="hidden" name="hidden">
 </form>
+</body>
+</html>

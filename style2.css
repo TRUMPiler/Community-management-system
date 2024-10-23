@@ -10,7 +10,7 @@ body, h1, p, ul, li, a, button {
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('background1.jpg'); /* Adjust the path as necessary */
+    background-image: url('test1/assets/images/meetings-bg.jpg'); /* Adjust the path as necessary */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -222,14 +222,14 @@
                                             <tbody>
                                                 <?php 
                                                  include "../../../connect.php";
-                                                $query = "select d.id,d.amount,d.date,d.status,u.name from tbl_donation d join  tbl_user u on d.uid=u.id";
+                                                 $query = "SELECT * FROM tbl_donation";
                                                 $result = mysqli_query($con, $query);
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
                                                 ?>
                                                         <tr>
                                                             <td><?php echo $row["id"]; ?></td>
-                                                            <td><?php echo $row["amount"]; ?></td>
+                                                            <td><?php echo $row["price"]; ?></td>
                                                             <td><?php echo $row["date"]; ?></td>
                                                             <td><?php echo $row["status"]; ?></td>
                                                             <td><?php echo $row["name"]; ?></td>
@@ -241,12 +241,18 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" href="#">Deactivated</a>
-
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="#">Edit</a>
-
-                                                                    </div>
+                                                                <?php
+                                                                if ($row["status"] == 0) {
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="changestatus(<?php echo $row['id'] ?>,1)">Activate</a>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="changestatus(<?php echo $row['id'] ?>,0)">Deactivate</a>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -336,4 +342,25 @@
                 });
             });
         </script>
+        <script>
+            function changestatus(id, status) {
+            $.ajax({
+                url: '../../../Ajax_file/changestatusdonation.php',
+                method: 'POST',
+                data: {
+                    id: id,
+                    status: status,
+                },
+                success: function(response) {
+                    if (response == true) {
+                        alert("Status updated Successfully!");
+                        window.location = "showdonation.php";
+                    } else {
+                        alert("Problem Occured!");
+                        alert(response);
+                    }
+                }
+            })
+        }
+    </script>
     </body>

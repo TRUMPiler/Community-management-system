@@ -256,12 +256,21 @@
                                                                         <span class="sr-only">Toggle Dropdown</span>
                                                                     </button>
                                                                     <div class="dropdown-menu" role="menu">
-                                                                        <a class="dropdown-item" onclick="deactive(<?php echo $row['id']?>,0)">Deactivated</a>
+                                                                <?php
+                                                                if ($row["status"] == 0) {
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="changestatus(<?php echo $row['id'] ?>,1)">Activate</a>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <a class="dropdown-item" onclick="changestatus(<?php echo $row['id'] ?>,0)">Deactivate</a>
+                                                                <?php
+                                                                }
+                                                                ?>
 
-                                                                        <div class="dropdown-divider"></div>
-                                                                        <a class="dropdown-item" href="../forms/editannouncement.php?id=<?php echo $row["id"];?>">Edit</a>
-
-                                                                    </div>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item" href="../forms/editannouncement.php?id=<?php echo $row["id"];?>">Edit</a>
+                                                            </div>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -340,24 +349,6 @@
         </script>
         <!-- Page specific script -->
         <script>
-            function deactive(id,status)
-            {
-                $.ajax({
-                    url:'../../../Ajax_file/changestatusannouncement.php',
-                    data:{
-                        id:id,
-                        status:status
-                    },
-                    method:"POST",
-                    success:function(response)
-                    {
-                        if(response==true)
-                        {
-                            alert("status is changed successfully")
-                        }
-                    }
-                })
-            }
             $(function() {
                 $("#example1").DataTable({
                     "responsive": true,
@@ -376,4 +367,25 @@
                 });
             });
         </script>
+        <script>
+        function changestatus(id, status) {
+            $.ajax({
+                url: '../../../Ajax_file/changestatusannouncement.php',
+                method: 'POST',
+                data: {
+                    id: id,
+                    status: status,
+                },
+                success: function(response) {
+                    if (response == true) {
+                        alert("Status updated Successfully!");
+                        window.location = "showannouncement.php";
+                    } else {
+                        alert("Problem Occured!");
+                        alert(response);
+                    }
+                }
+            })
+        }
+    </script>
     </body>

@@ -197,7 +197,7 @@ session_start();
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form id="quickForm" method="post" action="RegisterUser">
+                            <form id="quickForm">
                                 <div class="card-body">
 
                                     <!-- <div class="form-group"> -->
@@ -295,8 +295,6 @@ session_start();
     <script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
     </div>
 </body>
-
-</html>
 <script>
            $(document).ready(function() {
                 $("#quickForm").on("submit",function(event) {
@@ -325,3 +323,4 @@ session_start();
                 })
             })
 </script>
+</html>

@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Admin</span>
     </a>
 
     <!-- Sidebar -->
@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../../dist/img/3.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Uma Foundation</a>
@@ -44,7 +44,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../index.php" class="nav-link active">
+                <a href="index.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>index</p>
                 </a>
@@ -61,17 +61,19 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+           
+              -->
+              <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../pages/forms/addhall.php" class="nav-link">
+                <a href="pages/forms/addhallmaster.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>addhalls</p>
+                  <p>addhallmaster</p>
                 </a>
               </li>
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./pages/forms/addevent.php" class="nav-link">
+                <a href="pages/forms/addevent.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addevent</p>
                 </a>
@@ -79,9 +81,33 @@
               </ul>
               <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./pages/forms/addscholarship.php" class="nav-link">
+                <a href="pages/forms/addscholarship.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addscholarship</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/forms/addannouncement.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addannouncement</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/forms/addannouncementtype.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addannouncementtype</p>
+                </a>
+              </li>
+              </ul>
+              <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/forms/addparticipation.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>addparticipation</p>
                 </a>
               </li>
               </ul>
@@ -140,9 +166,12 @@
              
             
           </li>
-          <li class="nav-header">EXAMPLES</li>
-            </ul>
-          </li>
+          <li class="nav-item">
+                <a href="../logout.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logout</p>
+                </a>
+              </li>
          
         
         </ul>

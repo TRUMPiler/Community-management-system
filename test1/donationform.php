@@ -21,118 +21,32 @@ session_start();
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <style> 
- /* General styling for the contact section */
-.contact-us {
-    background-color: #f0f0f5;
-    padding: 60px 0;
-    border-radius: 10px;
-}
+  .autocomplete-suggestion {
+      padding: 10px 15px;
+      cursor: pointer;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 14px;
+      color: #555;
+      transition: background-color 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+  }
 
-/* Container max width */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+  .autocomplete-suggestion:hover {
+      background-color: #f7f7f7;
+      color: #333;
+  }
 
-/* General body styling */
-body {
-    font-family: 'Arial', sans-serif;
-    color: black;
-}
+  .autocomplete-suggestion.active {
+      background-color: #ececec;
+      color: #222;
+      font-weight: 600;
+  }
 
-/* Heading styling */
-h2, h3 {
-    color: black;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Paragraph styling */
-p {
-    color: black;
-    font-size: 16px;
-    line-height: 1.75;
-    margin-bottom: 20px;
-    text-align: justify;
-}
-
-/* Donation option box styling */
-.donation-option {
-    background-color: #fff;
-    border: 2px solid #ddd;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Donation option text styling */
-.donation-option p {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: black;
-}
-
-.donation-option strong {
-    font-size: 18px;
-    color: black;  /* Keep the strong text black */
-}
-
-/* Input field styling */
-input[type="number"] {
-    width: 90px;
-    padding: 8px;
-    margin-top: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-}
-
-/* Button styling */
-button {
-    background-color: #d9534f;
-    color: #fff;
-    padding: 12px 25px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* No hover effects for buttons */
-button:hover {
-    background-color: #d9534f; /* Keep the same color */
-    box-shadow: none; /* Remove the shadow effect */
-}
-
-/* Footer styling */
-.footer {
-    text-align: center;
-    background-color: #444;
-    color: black;
-    padding: 25px 0;
-    margin-top: 60px;
-    border-top: 5px solid #d9534f;
-}
-
-.footer p {
-    margin: 0;
-    font-size: 14px;
-}
-
-/* No hover effects for donation options */
-.donation-option:hover {
-    background-color: #fff; /* No change on hover */
-    border-color: #ddd;     /* Keep the same border */
-    box-shadow: none;       /* Remove shadow effect */
-}
+  .autocomplete-suggestion:last-child {
+      border-bottom: none;
+  }
 
   
 </style>
@@ -195,7 +109,7 @@ https://templatemo.com/tm-569-edu-meeting
               <li class="has-sub">
                 <a href="javascript:void(0)"> Announcement </a>
                 <ul class="sub-menu">
-                  <li><a href="announcement.php"> Event </a></li>
+                  <li><a href="meetings.html"> Event </a></li>
                   <li><a href="meeting-details.html"> SchoralShip </a></li>
 
                 </ul>
@@ -841,74 +755,103 @@ https://templatemo.com/tm-569-edu-meeting
                     
   <section class="contact-us" id="contact">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-9 align-self-center">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <main>
-                            <div class="container">
-                                <h2>Donation</h2>
-                                <p><strong>Voluntary Support Donation :</strong></p>
-                                <p>Donations will be eligible for deduction under Section 80G of the Income Tax Act, 1961.<br>
-                                   To receive an 80G certificate, PAN number is mandatory.</p>
+      <div class="row">
+        <div class="col-lg-9 align-self-center">
+          <div class="row">
+            <div class="col-lg-12">
+            <main>
+        <div class="container">
+            <h2>Donation</h2>
+            <p><strong>Voluntary Support Donation :</strong></p>
+            <p>Donations will be eligible for deduction under Section 80G of the Income Tax Act, 1961.<br>
+               To receive an 80G certificate, PAN number is mandatory.</p>
 
-                                <h3>"I also want to be the foundation pillar in the construction of Jagatjanani Maa Umiya's historical temple, I am also the foundation pillar."</h3>
-
-                                <?php 
-                                include "../connect.php";
-                                $query="select * from tbl_donation_type where status=1";
-                                $result=mysqli_query($con,$query);
-                                while($row=$result->fetch_assoc())
-                                {
-                                    if($row["Name"]!="custom")
-                                    {
-                                ?>
-                                <div class="donation-option">
-                                    <p><?php echo $row["Name"];?><strong> <?php echo $row["price"];?></strong></p>
-                                    <?php 
-                                    if($row["quantitychangable"]==1)
-                                    {
-                                    ?>
-                                    <input type="number" name="number" value=1 id="<?php  echo  $row["id"];?>"><br>
-                                    <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable'];?>,<?php  echo  $row['id'];?>)">Donate</button>
-                                    <?php
-                                    }
-                                    else
-                                    {
-                                    ?>
-                                    <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable']?>,<?php  echo  $row['id'];?>)">Donate</button>
-                                    <?php 
-                                    }
-                                    }
-                                    else
-                                    {
-                                    ?>
-                                    <div class="donation-option">
-                                        <label for="customDonation">Donation Rs :</label>
-                                        <input type="number" id="<?php echo $row["id"];?>" value="100"  onchange="valuemeasure(<?php echo $row['id'];?>)" min="1">
-                                        <button type="button" onclick="donate('<?php echo $row['Name'];?>',1,<?php echo $row['quantitychangable'];?>,<?php echo $row['id'];?>)">Donate</button>
-                                    </div>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
-                                <?php
-                                }
-                                ?>
-                                <p>You can donate in person at the office or temple at Jaspur.</p>
-                                <p>Following are the other modes of payments for donations:</p>
-                            </div>
-                        </main>
-                    </div>
-                </div>
+            <h3>"I also want to be the foundation pillar in the construction of Jagatjanani Maa Umiya's historical temple, I am also the foundation pillar."</h3>
+            
+            
+            <?php 
+            include "../connect.php";
+            $query="select * from tbl_donation_type where status=1";
+            $result=mysqli_query($con,$query);
+            while($row=$result->fetch_assoc())
+            {
+              if($row["Name"]!="custom")
+              {
+              ?>
+              <div class="donation-option">
+                <p><?php echo $row["Name"];?><strong> <?php echo $row["price"];?></strong></p>
+                <?php 
+                if($row["quantitychangable"]==1)
+                {
+                  ?>
+                  <input type="number" name="number"  value=1 id="<?php  echo  $row["id"];?>"><br>
+                  <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable'];?>,<?php  echo  $row['id'];?>)">Donate</button>
+                  <?php
+                }
+                else
+                {
+                  ?>
+                 
+                   <button type="button" onclick="donate('<?php echo $row['Name'];?>',<?php echo $row['price'];?>,<?php echo $row['quantitychangable']?>,<?php  echo  $row['id'];?>)">Donate</button>
+                  <?php 
+                }
+              }
+              else
+              {
+                ?>
+                 <div class="donation-option">
+                <label for="customDonation">Donation Rs :</label>
+                <input type="number" id="<?php echo $row["id"];?>" value="100"  onchange="valuemeasure(<?php echo $row['id'];?>)" min="1">
+                <button type="button" onclick="donate('<?php echo $row['Name'];?>',1,<?php echo $row['quantitychangable'];?>,<?php echo $row['id'];?>)">Donate</button>
             </div>
-        </div>
-        <div class="footer">
-            <p>Copyright © 2024 Uma Foundation. All Rights Reserved.</p>
-        </div>
-    </div>
-</section>
+                <?php
+              }
+                ?>
+                
+            </div>
+              <?php
+            }
+            ?>
+           
+  
+           
 
+            <p>You can donate in person at the office or temple at Jaspur.</p>
+            <p>Following are the other modes of payments for donations:</p>
+        </div>
+    </main>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-lg-3">
+          <div class="right-info">
+            <ul>
+              <li>
+                <h6>Phone Number</h6>
+                <span>010-020-0340</span>
+              </li>
+              <li>
+                <h6>Email Address</h6>
+                <span>info@meeting.edu</span>
+              </li>
+              <li>
+                <h6>Street Address</h6>
+                <span>Rio de Janeiro - RJ, 22795-008, Brazil</span>
+              </li>
+              <li>
+                <h6>Website URL</h6>
+                <span>www.meeting.edu</span>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="footer">
+      <p>Copyright © 2024 Uma Foundation. All Rights Reserved.
+        <!-- <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p> -->
+    </div>
+  </section>
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
@@ -977,20 +920,38 @@ https://templatemo.com/tm-569-edu-meeting
 
     if (changeable == 1 || changeable == true) {
       
+      // $.ajax({url:"../Ajax_file/storetypeid.php",data:{
+      //   typeid:id,
+      // },type:"POST",success:function(response){if(response==true){alert("saved id")}else{alert(response);}}})
       quantity=$("#"+id).val();
     }
-
-  
-
+    if(price>100000||quantity>100000)
+    {
+    
+      alert("amount above 100000rs cant be donated directly please call our head office to make this donation");
+    }
+  else
+  {
+    $.ajax({url:"../Ajax_file/storetypeid.php",data:{
+        typeid:id,
+      },type:"POST",success:function(response){}})
     window.location = 'donation.php?doname=' + name + '&doquan=' + quantity + '&doprice=' + (price * quantity);
+  }
+
+    
 }
 function valuemeasure(id)
 {
   if($("#"+id).val()<100)
   {
     alert("amount above 100rs will accepted only");
+   
   }
-  $("#"+id).val(100);
+  else if($("#"+id).val()>100000)
+  {
+    alert("amount above 100000rs cant be donated directly please call our head office to make this donation");
+    $("#"+id).val(100);
+  }
 }
 function removeSpaces(input) {
     // Remove all spaces from the input string
@@ -1119,148 +1080,6 @@ function removeSpaces(input) {
         }
     });
 });
-</script>
-<script>
-     function debounce(func, delay) {
-            let timeout;
-            return function(...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), delay);
-            };
-        }
-
-        const fetchSuggestions = debounce(function(input) {
-            if (input.length < 3) {
-                document.getElementById('suggestions').innerHTML = '';
-                return;
-            }
-            const location = '23.204547904342565, 70.87135416153141';//23.204547904342565, 70.87135416153141
-            const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
-            const url = `https://api.olamaps.io/places/v1/autocomplete?location=${location}&input=${input}&api_key=${apiKey}`;
-
-            fetch(url, {
-                    headers: {
-                        'X-Request-Id': 'your-request-id'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('API Response:', data);
-                    const suggestionsDiv = document.getElementById('suggestions');
-                    suggestionsDiv.innerHTML = '';
-                    if (data.predictions && data.predictions.length > 0) {
-                        data.predictions.forEach(prediction => {
-                            const suggestionDiv = document.createElement('div');
-                            suggestionDiv.className = 'autocomplete-suggestion';
-                            suggestionDiv.textContent = prediction.description; // Use 'description' property
-                            suggestionDiv.addEventListener('click', () => {
-                                const {
-                                    lat,
-                                    lng
-                                } = prediction.geometry.location;
-                                callcity(lat,lng);
-                                document.getElementById('address').value = prediction.description; // Use 'description' property
-                                suggestionsDiv.innerHTML = '';
-                            });
-                            suggestionsDiv.appendChild(suggestionDiv);
-                        });
-                    } else {
-                        console.error('No predictions found in the response');
-                    }
-                })
-                .catch(error => console.error('Error fetching autocomplete suggestions:', error));
-        }, 300);
-
-        document.getElementById('address').addEventListener('input', function() {
-            fetchSuggestions(this.value);
-        });
-        
-        function callcity(lat, log) {
-            var count = 0;
-            // const location = '19.265980587014074,72.96698942923868';
-            const apiKey = 'PEDy9RDQZovqNa0v5z43MovpPUOQNBeXE2RiVdAg';
-            const url = `https://api.olamaps.io/places/v1/reverse-geocode?latlng=${lat}%2C${log}&api_key=${apiKey}`;
-
-            fetch(url, {
-                    headers: {
-                        'X-Request-Id': 'your-request-id'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    // if (getstate(data) == false) {
-                    //     alert("The address should belong to Gujrat only");
-                    //     return;
-                    // }
-                    getcity(data);
-                    console.log(count++);
-                });
-        }
-        function getstate(apiResponse) {
-            var count = 0;
-            var results = apiResponse.results;
-            var sublocalities = new Set(); 
-
-            for (let i = 0; i < results.length; i++) {
-                const addressComponents = results[i].address_components;
-                for (let j = 0; j < addressComponents.length; j++) {
-                    if (addressComponents[j].types.includes("administrative_area_level_1")) {
-                        const locality = addressComponents[j].long_name;
-                        if (locality === "GUJARAT") {
-
-                            return true;
-                        } else {
-                            document.getElementById('address').value = '';
-                            return false;
-                        }
-                    }
-                }
-            }
-            alert(`No match found for sub-locality please choose manually`);
-            return;
-        }
-        function getcity(apiResponse) {
-            var count = 0;
-            var results = apiResponse.results;
-            var sublocalities = new Set(); // Use a set to track unique sublocalities
-
-            for (let i = 0; i < results.length; i++) {
-                const addressComponents = results[i].address_components;
-                for (let j = 0; j < addressComponents.length; j++) {
-                    if (addressComponents[j].types.includes("locality")) {
-                        const sublocality = addressComponents[j].long_name;
-                        if (!sublocalities.has(sublocality)) {
-                            sublocalities.add(sublocality);
-                            console.log(sublocality);
-                            if (matchAreaWithSublocality(sublocality) === "ok") {
-                                console.log("done");
-                                return;
-                            } else {
-
-                            }
-                        }
-                    }
-                }
-            }
-            alert(`No match found for sub-locality please choose manually`);
-            return null;
-        }
-        function matchAreaWithSublocality(sublocalityName) {
-            const areaSelect = document.getElementById('city');
-            const options = areaSelect.options;
-
-            for (let i = 0; i < options.length; i++) {
-                if (options[i].text.toLowerCase() === sublocalityName.toLowerCase()) {
-                    areaSelect.value = options[i].value;
-                    console.log(`Matched area: ${options[i].text} with sub-locality: ${sublocalityName}`);
-
-                    return "ok";
-                }
-            }
-
-            return null;
-        }
 </script>
 
 

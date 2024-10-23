@@ -32,7 +32,7 @@
 
     body {
         font-family: Arial, sans-serif;
-        background-image: url('background1.jpg');
+        background-image: url('test1/assets/images/meetings-bg.jpg');
         /* Adjust the path as necessary */
         background-size: cover;
         background-position: center;
@@ -61,7 +61,7 @@
     h2 {
         margin-bottom: 20px;
         font-size: 2em;
-        color: #003366;
+        color: black;
         /* Dark blue */
     }
 
@@ -90,7 +90,7 @@
     }
 
     button[type="submit"] {
-        background-color: #003366;
+        background-color: black;
         /* Dark blue */
         color: #fff;
         padding: 10px 20px;

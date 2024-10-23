@@ -34,9 +34,10 @@ if (isset($_POST["login"])) {
                 $_SESSION["role"] = $row['role'];
                 echo $row["role"];
                 if ($row['role'] == 'cMajor') {
-                    echo "<script>alert('Login is successful');window.location='committee_major.php'</script>";
+                    echo "<script>alert('Login is successful');window.location='Cmajor/index.php'</script>";
                 } elseif ($row['role'] == 'cMember') {
-                    echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
+                    // echo "<script>alert('Login is successful');window.location='cm_request_list.php'</script>";
+                    echo "<script>alert('Login is successful');window.location='test1/index.php'</script>";
                 } elseif ($row['role'] == 'Member') {
                     echo "<script>alert('Login is successful');window.location='test1/index.php'</script>";
                 } elseif ($row['role'] == 'admin') {

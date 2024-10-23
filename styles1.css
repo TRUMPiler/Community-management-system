@@ -10,7 +10,7 @@ body, h1, p, ul, li, a, button, input, table, tr, td {
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url('background1.jpg'); /* Adjust the path as necessary */
+    background-image: url('test1/assets/images/meeting-01.jpg'); /* Adjust the path as necessary */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -37,7 +37,7 @@ body {
 h2 {
     margin-bottom: 20px;
     font-size: 2em;
-    color: #003366; /* Dark blue */
+    color: black; /* Dark blue */
 }
 
 .input-box {
@@ -61,7 +61,7 @@ h2 {
 }
 
 button.btn {
-    background-color: #003366; /* Dark blue */
+    background-color: black; /* Dark blue */
     color: #fff;
     padding: 10px 20px;
     border-radius: 5px;

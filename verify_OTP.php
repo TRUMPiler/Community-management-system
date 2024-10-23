@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validate OTP</title>
     <link rel="stylesheet" href="styles1.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url('test1/assets/images/meetings-bg.jpg'); /* Adjust the path as necessary */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: black; /* Dark blue */
+}
+button.btn {
+    background-color: black; /* Dark blue */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+    width: 100%;
+}
+        </style>
 </head>
 <body>
     <div class="container">

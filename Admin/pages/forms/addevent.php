@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html>
@@ -13,10 +14,10 @@
         DisableBackButton();
         window.onload = DisableBackButton;
         window.onpageshow = function(evt) {
-            if (evt.persisted) DisableBackButton()
+            if (evt.persisted) DisableBackButton();
         }
         window.onunload = function() {
-            void(0)
+            void(0);
         }
     </script>
     <!-- Google Font: Source Sans Pro -->
@@ -193,7 +194,7 @@
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form id="quickForm" method="post" action="RegisterUser">
+                            <form id="quickForm">
                                 <div class="card-body">
 
                                     <div class="form-group">
@@ -294,5 +295,4 @@
     <script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
     </div>
 </body>
-
 </html>

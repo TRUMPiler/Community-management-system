@@ -275,8 +275,6 @@
     <script src="../../plugins/jquery-validation/additional-methods.min.js"></script>
     </div>
 </body>
-
-</html>
 <script>
     $(document).ready(function() {
         console.log("running0");
@@ -286,7 +284,7 @@
             const form = new FormData(this);
             console.log("running1")
             $.ajax({
-                url: '../../../Ajax_file/edithallmaster.php',
+                url: '../../../Ajax_file/addhallmaster.php',
                 method: 'POST',
                 data: form,
                 processData: false,
@@ -297,8 +295,13 @@
                         alert("new announcement type added successfully");
                         window.location = '../tables/showhall.php';
                     }
+                    else
+                    {
+                        alert(response);
+                    }
                 }
             })
         })
     })
 </script>
+</html>

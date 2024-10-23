@@ -10,7 +10,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+          <img src="../../dist/img/3.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Uma Foundation</a>
@@ -61,14 +61,14 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="../pages/forms/addhall.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addhalls</p>
                 </a>
               </li>
-              </ul>
+              </ul> -->
               <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="./pages/forms/addevent.php" class="nav-link">

@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Committee Major</span>
     </a>
 
     <!-- Sidebar -->
@@ -44,7 +44,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="index.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>index</p>
                 </a>
@@ -61,14 +61,14 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pages/forms/addhall.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>addhalls</p>
                 </a>
               </li>
-              </ul>
+              </ul> -->
               <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="pages/forms/addevent.php" class="nav-link">
@@ -165,9 +165,13 @@
              
             
           </li>
-          <li class="nav-header">EXAMPLES</li>
-            </ul>
-          </li>
+          <li class="nav-item">
+                <a href="../logout.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logout</p>
+                </a>
+              </li>
+             
          
         
         </ul>
